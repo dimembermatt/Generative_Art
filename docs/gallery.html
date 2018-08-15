@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- LANDING PAGE-->
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--header-->
+<head>
+  <title>Gallery</title>
+  <link rel="stylesheet" href="styles3.css">
+  <style>
+    img {
+      margin:auto;
+      float:left;
+      width:45%;
+      display:block;
+    }
+    section {
+      opacity: 1;
+    }
+    .accordion {
+      cursor: pointer;
+      border: none;
+      text-align: left;
+      outline: none;
+      transition: 0.4s;
+    }
+    .panel {
+      min-height: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+    }
+  </style>
+</head>
+
+<body id="main" style="background-color:rgb(255, 255, 255);">
+  <!--title-->
+  <h1>Gallery of Generative Art</h1>
+  <h4>Matthew Yu</h4>
+  <div class="flex-container">
+    <!--noisy gallery-->
+    <section>
+      <button class="accordion"><h2>Noisy Pictures</h2></button>
+      <div id="NoisyGallery" class="panel"></div>
+      <script>
+        let NoisyContainer = document.getElementById("NoisyGallery");
+        //zero index contains extension
+        //everything else is picture name
+        let NoisyPictures = ["png", "coastline", "moon", "nebula2", "nebula3", "spaceMountain", "wunderscape1", "wunderscape2"];
+        for (let i = 1; i < NoisyPictures.length; i++) {
+          let src = "media/Generative_Drawings/NoisySlideshow/" + NoisyPictures[i] + "." + NoisyPictures[0];
+          let img = new Image();
+          img.src = src;
+          NoisyContainer.appendChild(img);
+        }
+      </script>
+    </section>
+    <!--flowfield gallery-->
+    <section>
+      <button class="accordion"><h2>FlowField Pictures</h2></button>
+      <div id="FlowFieldGallery" class="panel"></div>
+      <script>
+        let FlowFieldContainer = document.getElementById("FlowFieldGallery");
+        let FlowFieldPictures = ["png", "flowfield1", "flowfield2", "flowfield3", "flowfield4", "flowfield5", "flowfield6", "heatmap", "rainbowrain", "wormtunnels"];
+        for (let i = 1; i < FlowFieldPictures.length; i++) {
+          let src = "media/Generative_Drawings/FlowFieldSlideshow/" + FlowFieldPictures[i] + "." + FlowFieldPictures[0];
+          let img = new Image();
+          img.src = src;
+          FlowFieldContainer.appendChild(img);
+        }
+      </script>
+    </section>
+    <!--G001 gallery-->
+    <section>
+      <button class="accordion"><h2>G001 Pictures</h2></button>
+      <div id="G001Gallery" class="panel"></div>
+      <script>
+        let G001Container = document.getElementById("G001Gallery");
+        let G001Pictures = ["png", "aligningMirors", "circleStructure", "eyeball", "mechanicalSun", "rotatingDrums"];
+        for (let i = 1; i < G001Pictures.length; i++) {
+          let src = "media/Generative_Drawings/G001_Drawings/" + G001Pictures[i] + "." + G001Pictures[0];
+          let img = new Image();
+          img.src = src;
+          G001Container.appendChild(img);
+        }
+      </script>
+    </section>
+    <!--G003 gallery-->
+    <section>
+      <button class="accordion"><h2>G003 Pictures</h2></button>
+      <div id="G003Gallery" class="panel"></div>
+      <script>
+        let G003Container = document.getElementById("G003Gallery");
+        let G003Pictures = ["png", "001", "beams", "bouquet", "claws", "colorBurst", "cylindricalSections", "diffraction", "diffraction2", "dispersion", "flowerPetal", "jellyfish", "nikeLogo", "outline", "pixelSun", "ridges", "strangeObject", "strangeObject2", "vortex"];
+        for (let i = 1; i < G003Pictures.length; i++) {
+          let src = "media/Generative_Drawings/G003_Drawings/" + G003Pictures[i] + "." + G003Pictures[0];
+          let img = new Image();
+          img.src = src;
+          G003Container.appendChild(img);
+        }
+      </script>
+    </section>
+  </div>
+  <script>
+    let acc = document.getElementsByClassName("accordion");
+    for (let i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        let panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    }
+</script>
+</body>
