@@ -15,7 +15,7 @@ let blockIdx = 0;
 let colorPickerR = 0;
 let colorPickerG = 0;
 let colorPickerB = 0;
-let name = "robot";
+let name = "ahmad";
 let extension = ".png";
 let cnv;
 
@@ -88,7 +88,7 @@ function draw() {
   updatePixels();
   threshold = (r+g+b)/n/3;
   iteration++;
-  if (iteration === 2)
+  if (iteration === 3)
     noLoop();
 }
 let pressed = false;
