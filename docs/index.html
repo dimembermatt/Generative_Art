@@ -11,26 +11,17 @@
   <style>
     img {
       margin:auto;
-      float:left;
-      width:45%;
+      max-width:45%;
+      min-height:17%;
+      max-height:20%;
       display:block;
     }
     section {
       opacity: 1;
-      width:48%;
+      width:90%;
     }
-    .accordion {
-      cursor: pointer;
-      border: none;
-      text-align: left;
-      outline: none;
-      transition: 0.4s;
-    }
-    .panel {
-      min-height: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.2s ease-out;
+    a img{
+        float:left;
     }
   </style>
 </head>
@@ -39,8 +30,32 @@
   <!--title-->
   <h1>Generative Art Gallery</h1>
   <h4>Matthew Yu</h4>
+  <p>
+      This project page documents all the programs I've done since Summer 2018
+      on Generative Art. Each thumbnail of a picture represents a different
+      program that I've done on this project, leading to a subpage that hosts my
+      thoughts, procedures, and results of that experiment.
+  </p>
+  <p>
+      Please feel free to explore this page, and contact me to discuss my work,
+      suggestions, or new ideas!
+  </p>
+
   <div class="flex-container">
-    <!--noisy gallery-->
+
+          <a href="mailto:matthewjkyu@gmail.com">
+            <img src="icons/gmail.png" style="float:left;width:50px;height:50px;border:0;">
+          </a>
+          <a href="https://github.com/dimembermatt">
+            <img src="icons/github.png" style="float:left;width:50px;height:50px;border:0;">
+          </a>
+          <a href="https://www.linkedin.com/in/matthew-yu-126331144/">
+            <img src="icons/linkedin.png" style="float:left;width:50px;height:50px;border:0;">
+          </a>
+
+  </div>
+  <div class="flex-container">
+    <!--noisy gallery
     <section>
       <button class="accordion"><h2>Noisy</h2></button>
       <div id="NoisyGallery" class="panel"></div>
@@ -57,7 +72,7 @@
         }
       </script>
     </section>
-    <!--flowfield gallery-->
+    <!--flowfield gallery
     <section>
       <button class="accordion"><h2>FlowField</h2></button>
       <div id="FlowFieldGallery" class="panel"></div>
@@ -71,126 +86,36 @@
           FlowFieldContainer.appendChild(img);
         }
       </script>
-    </section>
-    <!--G001 gallery-->
+  </section>-->
     <section>
-      <button class="accordion"><h2>G001</h2></button>
-      <div id="G001Gallery" class="panel"></div>
-      <script>
-        let G001Container = document.getElementById("G001Gallery");
-        let G001Pictures = ["png", "aligningMirors", "circleStructure", "eyeball", "mechanicalSun", "rotatingDrums"];
-        for (let i = 1; i < G001Pictures.length; i++) {
-          let src = "pictures/G001_Drawings/" + G001Pictures[i] + "." + G001Pictures[0];
-          let img = new Image();
-          img.src = src;
-          G001Container.appendChild(img);
-        }
-      </script>
-    </section>
-    <!--G002 gallery-->
-    <section>
-      <button class="accordion"><h2>G002</h2></button>
-      <div id="G002Gallery" class="panel"></div>
-      <script>
-        let G002Container = document.getElementById("G002Gallery");
-        let G002Pictures = ["png", "abstract1", "abstract3", "abstract4",
-          "abstract5", "abstract6", "abstract7", "babyDinosaur", "abstract2"];
-        for (let i = 1; i < G002Pictures.length; i++) {
-          let src = "pictures/G002_Drawings/" + G002Pictures[i] + "." + G002Pictures[0];
-          let img = new Image();
-          img.src = src;
-          G002Container.appendChild(img);
-        }
-      </script>
-    </section>
-    <!--G003 gallery-->
-    <section>
-      <button class="accordion"><h2>G003 V1</h2></button>
-      <div id="G003V1Gallery" class="panel"></div>
-      <script>
-        let G003V1Container = document.getElementById("G003V1Gallery");
-        let G003V1Pictures = ["png", "beams", "colorBurst", "cylindricalSections",
-          "diffraction", "diffraction2", "dispersion", "pixelSun", "ridges", "vortex"];
-        for (let i = 1; i < G003V1Pictures.length; i++) {
-          let src = "pictures/G003_Drawings/V1/" + G003V1Pictures[i] + "." + G003V1Pictures[0];
-          let img = new Image();
-          img.src = src;
-          G003V1Container.appendChild(img);
-        }
-      </script>
-      <button class="accordion"><h2>G003 V2</h2></button>
-      <div id="G003V2Gallery" class="panel"></div>
-      <script>
-        let G003V2Container = document.getElementById("G003V2Gallery");
-        let G003V2Pictures = ["png", "bouquet", "claws", "jellyfish", "outline",
-           "nikeLogo", "strangeObject", "strangeObject2", "brightman"];
-        for (let i = 1; i < G003V2Pictures.length; i++) {
-          let src = "pictures/G003_Drawings/V2/" + G003V2Pictures[i] + "." + G003V2Pictures[0];
-          let img = new Image();
-          img.src = src;
-          G003V2Container.appendChild(img);
-        }
-      </script>
-      <button class="accordion"><h2>G003 V3</h2></button>
-      <div id="G003V3Gallery" class="panel"></div>
-      <script>
-        let G003V3Container = document.getElementById("G003V3Gallery");
-        let G003V3Pictures = ["png", "001", "flowerPetal"];
-        for (let i = 1; i < G003V3Pictures.length; i++) {
-          let src = "pictures/G003_Drawings/V3/" + G003V3Pictures[i] + "." + G003V3Pictures[0];
-          let img = new Image();
-          img.src = src;
-          G003V3Container.appendChild(img);
-        }
-      </script>
-    </section>
-    <!--G005 gallery-->
-    <section>
-      <button class="accordion"><h2>G005</h2></button>
-      <div id="G005Gallery" class="panel"></div>
-      <script>
-        let G005Container = document.getElementById("G005Gallery");
-        let G005Pictures = ["png", "caveOpening", "concorde", "pixelSchool",
-          "pixelSchool2", "pixelTurtle", "pixelTurtle2", "glasses", "self", "arjunFace"];
-        for (let i = 1; i < G005Pictures.length; i++) {
-          let src = "pictures/G005_Drawings/" + G005Pictures[i] + "." + G005Pictures[0];
-          let img = new Image();
-          img.src = src;
-          G005Container.appendChild(img);
-        }
-      </script>
-    </section>
-    <!--G007 gallery-->
-    <section>
-      <button class="accordion"><h2>G007</h2></button>
-      <div id="G007Gallery" class="panel"></div>
-      <script>
-        let G007Container = document.getElementById("G007Gallery");
-        let G007Pictures = ["png", "amnioticFluid", "Beluusov-Zhabotinsky_Reaction", "blue_and_red"];
-        for (let i = 1; i < G007Pictures.length; i++) {
-          let src = "pictures/G007_Drawings/" + G007Pictures[i] + "." + G007Pictures[0];
-          let img = new Image();
-          img.src = src;
-          G007Container.appendChild(img);
-        }
-      </script>
+        <!--noisy gallery-->
+        <a href="404.html">
+            <img src="thumbnails/moon.png">
+        </a>
+        <!--flowfield gallery-->
+        <a href="404.html">
+            <img src="thumbnails/heatmap.png">
+        </a>
+        <!--G001 gallery-->
+        <a href="GA_G001.html">
+            <img src="thumbnails/Layered_Nodes_2.PNG">
+        </a>
+        <!--G002 gallery-->
+        <a href="GA_G002.html">
+            <img src="thumbnails/Grid_3.png">
+        </a>
+        <!--G003 gallery-->
+        <a href="GA_G003.html">
+            <img src="thumbnails/jellyfish.png">
+        </a>
+        <!--G005 gallery-->
+        <a href="404.html">
+            <img src="thumbnails/caveOpening.png">
+        </a>
+        <!--G007 gallery-->
+        <a href="404.html">
+            <img src="thumbnails/Beluusov-Zhabotinsky_Reaction.png">
+        </a>
     </section>
   </div>
-  <script>
-    let acc = document.getElementsByClassName("accordion");
-    for (let i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        let panel = this.nextElementSibling;
-        let section = this.parentElement;
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null;
-          section.style.width = 48 + "%";
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-          section.style.width = 98 + "%";
-        }
-      });
-    }
-</script>
 </body>
