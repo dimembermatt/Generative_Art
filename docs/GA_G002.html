@@ -22,9 +22,11 @@
     <style>
       img {
         margin:auto;
-        float:left;
         width:45%;
         display:block;
+      }
+      .panel > img {
+          float:left;
       }
       section {
         opacity: 1;
@@ -64,21 +66,25 @@
         and sans a couple edge cases we end up with this:
     </p>
     <!--Insert Grid_0.png here-->
+    <img src="description\G002\Grid_0.png">
     <p>
         Next I added an offset to each node, such that each point becomes slightly
         out of place. I check it against the neighboring nodes to make sure it
         doesn't go past them, but they roam around pretty freely.
-        <br>
+    </p>
+    <p>
         I do that for each frame, and add color to each polygon drawn between
         four nodes. These nodes that form each shape will always be the same,
         but their positions won't, so I get a slightly interesting result:
     </p>
     <!--Insert Grid_1.png here-->
+    <img src="description\G002\Grid_1.png">
     <p>
         Over time, they do overlap somewhat, which makes the polygon they corner
         a little darker than the others.
     </p>
     <!--Insert Grid_2.png here-->
+    <img src="description\G002\Grid_2.png">
     <p>
         As a side note, the top right and bottom left edges don't have a shape
         attached to them. This is partially because I didn't add an edge case
@@ -96,15 +102,18 @@
         be very large. In addition, the nodes are picked <i>at random</i> and stored
         <i>in order</i>, so the shape can double back across itself and split into
         several connected shapes.
-        <br>Here's the result:
+        <br><br>
+        Here's the result:
     </p>
     <!--Insert Grid_3.png here-->
+    <img src="description\G002\Grid_3.png">
     <p>
         I allowed the lines between the nodes to continue to exist at every frame,
         but removed the fill color. So eventually over time the shapes become
         a nice background shade of grey.
     </p>
     <!--Insert Grid_4.png here-->
+    <img src="description\G002\Grid_4.png">
     <hr>
     <p>
         Here's a gallery of some of the Generative Art I've created with this program.
@@ -138,15 +147,12 @@
             panel.style.maxHeight = null;
             section.style.width = 48 + "%";
           } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
+            panel.style.maxHeight = panel.scrollHeight + 200 + "px";
             section.style.width = 98 + "%";
           }
         });
       }
     </script>
-
-
-
 </body>
 <footer>
     This page is part of a project to document and effectively communicate code

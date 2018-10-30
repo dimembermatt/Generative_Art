@@ -15,7 +15,7 @@ let dim = 2500;
 let numParticles = 2000;
 let lifetime = 25;
 let particles = [];
-let a = .2;
+let a = .55;
 let b = 1.01;
 let r = 250, g = 0, bc = 250;
 let colorSwitch = 0, sign = 1;

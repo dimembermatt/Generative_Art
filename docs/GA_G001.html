@@ -22,9 +22,11 @@
     <style>
       img {
         margin:auto;
-        float:left;
         width:45%;
         display:block;
+      }
+      .panel > img {
+          float:left;
       }
       section {
         opacity: 1;
@@ -82,24 +84,27 @@
         My basic output would be something like this:
     </p>
     <!--Insert Layered_Nodes_0.png here-->
+    <img src="description\G001\Layered_Nodes_0.PNG">
     <p>
         With more layers, you tend to see higher layers devolve into darkness since
         there is a larger node density despite the increased radius size. Therefore
         layers beyond 7 are probably not going to look very interesting.
     </p>
     <!--Insert Layered_Nodes_1.png here-->
+    <img src="description\G001\Layered_Nodes_1.PNG">
     <p>
         So after drawing a static image, the next rational thing to do is to make
         it dynamic. So I added rotation for each layer, based on the framecount of
         the program.
     </p>
     <!--Insert Layered_Nodes_2.png here-->
+    <img src="description\G001\Layered_Nodes_2.PNG">
     <p>
         Tada! A rotating eyeball! Let's add an offset to each layer (but just
         enough so it doesn't cause layers to come out of each other).
     </p>
     <!--Insert Layered_Nodes_3.png here-->
-
+    <img src="description\G001\Layered_Nodes_3.PNG">
     <hr>
     <h3>Additional things from this program:</h3>
     <p>
@@ -149,7 +154,7 @@
             panel.style.maxHeight = null;
             section.style.width = 48 + "%";
           } else {
-            panel.style.maxHeight = panel.scrollHeight + 100 + "px";
+            panel.style.maxHeight = panel.scrollHeight + 200 + "px";
             section.style.width = 98 + "%";
           }
         });

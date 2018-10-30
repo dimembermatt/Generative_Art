@@ -1,15 +1,16 @@
 /**
- * G003_sketch_V2.js.
+ * G003_sketch_V3.js.
  * Matthew Yu
- * 8/7/18
+ * Last Modified: 10/29/18
+ *  Modified to show differentiation from V2
  * One of a series of sketches involving Generative Art.
  * Experiments with the Henon Strange Attractor.
  * http://mathworld.wolfram.com/HenonMap.html
  * http://www.complexification.net/gallery/machines/henonPhaseDeep/
  * http://paulbourke.net/fractals/henonphase/
  * The related equations are
- * X(n+1) = 1 - aX(n)^2 + Y(n)
- * Y(n+1) = bX(n)
+ * X(n+1) = x(n) cos(a) - (Y(n) - X(n)^2 * sin(a))
+ * Y(n+1) = x(n) sin(a) + (Y(n) - X(n)^2 * cos(a))
  */
 let dim = 2500;
 let numParticles = 2000;
