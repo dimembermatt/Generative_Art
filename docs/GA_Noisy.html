@@ -100,7 +100,12 @@
         blockIdx is the current pixel. The program doesn't access the inner loop
         unless ...
     </p>
-
+    <p>
+        The 25 is a modifiable number that affects how often the distortion is
+        applied for the image. If you set it to 100, the picture tends to break
+        into blocks across each row, (in sizes of at most 25 pixels).
+    </p>
+    <img src="description\Noisy\nebula3.png">
     <p>
         One of the things to notice is that after the program iterates after a
         couple frames, the image tends to start noising over into static, although

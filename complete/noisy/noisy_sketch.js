@@ -15,8 +15,8 @@ let blockIdx = 0;
 let colorPickerR = 0;
 let colorPickerG = 0;
 let colorPickerB = 0;
-let name = "ahmad";
-let extension = ".png";
+let name = "planets2";
+let extension = ".jpg";
 let cnv;
 
 function preload() {

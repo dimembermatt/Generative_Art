@@ -1,17 +1,21 @@
 /**
  * G005_sketch_V2.js.
  * Matthew Yu
- * 8/10/18
+ * Last Modified: 11/5/18
  * One of a series of sketches involving Generative Art.
  * Using Connected Components algorithm, section areas of an input picture
  * and color each area a discrete color.
- * Tested on the latest Chrome version. Not recommended for images above
- * 300x300 px. Time is a exponential function of size.
+ * Tested on the latest Chrome version. Recommended for pictures within 2kx2k
+ * TODO: test merging objects at every collision instead of end algo recursion
+ * 11/5/18 Test Results of changing pixel access:
+ * Talonflame.jpg (275x287)
+ *  Before  345.591s/1.621s
+ *  After   1.388s/2.234s
  */
 //modify these variables
-let name = "adventures";
-let extension = ".png";
-let variance = 20;
+let name = "launch2";
+let extension = ".jpg";
+let variance = 10;
 //do not modify
 let d;
 let iteration = 0;
@@ -26,16 +30,16 @@ function preload() {
 
 function setup() {
   let width, height;
-  if(img.width > 2000) {
-    width = 2000;
-  } else {
+  // if(img.width > 1000) {
+  //   width = 1000;
+  // } else {
     width = img.width;
-  }
-  if(img.height > 1333) {
-    height = 1333;
-  } else {
+  // }
+  // if(img.height > 900) {
+  //   height = 900;
+  // } else {
     height = img.height;
-  }
+  //}
   cnv = createCanvas(width, height);
   image(img, 0,0);
 
@@ -78,18 +82,20 @@ function create2dArray(columns, rows) {
 function runAlgorithm(objectMap, correlationMap) {
   let color;
   let counter = 0;
+  console.log("Height: " + height);
+  let t0 = performance.now();
   for (let y = 0; y < height; y++) {
     if(y%5 === 0)
       console.log("row:" + y);
     for (let x = 0; x < width; x++) {
-      color = get(x, y);
+      color = getP(x, y);
       //first pixel
       if (x === 0 && y === 0) {
         objectMap[x][y] = counter;
         correlationMap.push([counter, counter, color]); //push the counter, what obj it equals to, and color
         counter++;
       } else if (x != 0 && y === 0) { //first row
-        let leftColor = get(x-1, y);
+        let leftColor = getP(x-1, y);
         let diff = [abs(color[0]-leftColor[0]), abs(color[1]-leftColor[1]), abs(color[2]-leftColor[2])];
         if (diff[0] > variance || diff[1] > variance || diff[2] > variance) { //new object
           objectMap[x][y] = counter;
@@ -99,7 +105,7 @@ function runAlgorithm(objectMap, correlationMap) {
           objectMap[x][y] = objectMap[x-1][y];
         }
       } else if (x === 0 && y != 0) { //first column
-        let aboveColor = get(x, y-1);
+        let aboveColor = getP(x, y-1);
         let diff = [abs(color[0]-aboveColor[0]), abs(color[1]-aboveColor[1]), abs(color[2]-aboveColor[2])];
         if (diff[0] > variance || diff[1] > variance || diff[2] > variance) { //new object
           objectMap[x][y] = counter;
@@ -109,8 +115,8 @@ function runAlgorithm(objectMap, correlationMap) {
           objectMap[x][y] = objectMap[x][y-1];
         }
       } else {  //everywhere else
-        let leftColor = get(x-1, y);
-        let aboveColor = get(x, y-1);
+        let leftColor = getP(x-1, y);
+        let aboveColor = getP(x, y-1);
         let lDiff = [abs(color[0]-leftColor[0]), abs(color[1]-leftColor[1]), abs(color[2]-leftColor[2])];
         let aDiff = [abs(color[0]-aboveColor[0]), abs(color[1]-aboveColor[1]), abs(color[2]-aboveColor[2])];
         let lBool = lDiff[0] > variance || lDiff[1] > variance || lDiff[2] > variance;
@@ -147,6 +153,8 @@ function runAlgorithm(objectMap, correlationMap) {
       }
     }
   }
+  let t1 = performance.now();
+  console.log("Algorithm time: " + (t1-t0) + " ms");
 }
 
 /**
@@ -157,19 +165,24 @@ function runAlgorithm(objectMap, correlationMap) {
  */
 function colorImage(objectMap, correlationMap) {
   let objID;
-  for (let x = 0; x < width; x++) {
-    for (let y = 0; y < height; y++) {
+  let t0 = performance.now();
+  for (let y = 0; y < height; y++) {
+      if(y%5 === 0)
+        console.log("row:" + y);
+      for (let x = 0; x < width; x++) {
       objID = objectMap[x][y];
       searchRef(objID, correlationMap, x, y);
     }
   }
+  let t1 = performance.now();
+  console.log("Coloring time: " + (t1-t0) + " ms");
 }
 
 function searchRef(objID, correlationMap, x, y) {
   for (ele of correlationMap) {
     if (ele[0] === objID) { //object reference found
       if (ele[0] === ele[1]) { //if object ID matches its reference
-        set(x, y, ele[2]);  //set color of pixel
+        setP(x, y, ele[2]);  //set color of pixel
       } else { //object ID references another object
         objID = ele[1];
         searchRef(objID, correlationMap, x, y);
@@ -177,4 +190,17 @@ function searchRef(objID, correlationMap, x, y) {
       break;
     }
   }
+}
+
+function getP(x, y){
+    var off = (y * width + x) * d * 4;
+    return [pixels[off], pixels[off + 1], pixels[off + 2], pixels[off + 3]];
+}
+
+function setP(x, y, color){
+    var off = (y * width + x) * d * 4;
+    pixels[off] = color[0];
+    pixels[off + 1] = color[1];
+    pixels[off + 2] = color[2];
+    pixels[off + 3] = color[3];
 }
