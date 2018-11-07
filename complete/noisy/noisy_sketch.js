@@ -2,6 +2,8 @@
  * noisy_sketch.js.
  * Matthew Yu
  * 8/2/18
+ * Last modified: 11/6/18
+ *  changed how color for recoloring pixels is chosen.
  * warps graphics based on noise and average color
  */
 let d;
@@ -12,10 +14,11 @@ let noiseIdx;
 let iteration = 0;
 let canvas;
 let blockIdx = 0;
+let sectionSize = 1001;
 let colorPickerR = 0;
 let colorPickerG = 0;
 let colorPickerB = 0;
-let name = "planets2";
+let name = "moon";
 let extension = ".jpg";
 let cnv;
 
@@ -41,7 +44,7 @@ function setup() {
   image(img, 0,0);
 
   d = pixelDensity();
-  noiseIdx = random(0, 10000);
+  noiseIdx = 0; //random(0, 10000);
   canvas = 4 * (width * d) * (height* d);
  }
 
@@ -61,11 +64,11 @@ function draw() {
   n = 0;
   loadPixels();
   for (let i = 0; i < canvas; i += 4) {
-    if (i/(d*width/(width/25)) == blockIdx) {  // divide by 100 for rowish, 19,25 for splotchy
+    if (i%(d*sectionSize) == blockIdx) {
       colorPickerR = noise(noiseIdx) * 255;
       colorPickerG = noise(noiseIdx+150) * 255;
       colorPickerB = noise(noiseIdx+300) * 255;
-      blockIdx += 1;
+      blockIdx = (blockIdx+1)%sectionSize;
       noiseIdx += .01;
     }
 

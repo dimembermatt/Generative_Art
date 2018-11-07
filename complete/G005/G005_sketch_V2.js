@@ -13,9 +13,9 @@
  *  After   1.388s/2.234s
  */
 //modify these variables
-let name = "launch2";
-let extension = ".jpg";
-let variance = 10;
+let name = "planets2";
+let extension = ".png";
+let variance = 30;
 //do not modify
 let d;
 let iteration = 0;

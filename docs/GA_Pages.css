@@ -1,9 +1,14 @@
 /*styles3.css - prod*/
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web|Montserrat|Roboto|Open+Sans');
 @import url('https://fonts.googleapis.com/css?family=Nothing+You+Could+Do');
-html {font-size: calc(8px + 1.0vw);}
+html {font-size: calc(8px + .9vw);}
 
-img {padding: 1em;}
+img {
+    padding: 1em;
+    margin:auto;
+    width:50%;
+    display:block;
+}
 body {
   /*background-image: url("media/Background/contrail.jpg");
   background-size: cover;*/
@@ -18,14 +23,14 @@ body {
 div {
   border-radius: 10px;
 }
-p {
+p{
   margin-left: 5%;
   margin-right: 5%;
   /*margin-bottom: 1.3em;*/
 }
 
 a:link, a:visited {
-  color: lightblue;
+  color: darkblue;
   text-decoration: none;
 }
 a:hover {
@@ -55,7 +60,11 @@ h4 {font-size: 1.333em;}
 
 h5 {font-size: .999em;}
 
-li {font-size: .75em;}
+li {
+    font-size: calc(8px + .75vw);
+    margin-left: 10%;
+    margin-right: 10%;
+}
 
 small, .font_small {font-size: 0.75em;}
 
@@ -63,38 +72,6 @@ button {
     background-color: rgba(13, 27, 63, 0);
     border: none;
     color: white;
-}
-
-#trees {
-   position:absolute;
-   width:90%;
-   max-width: 1250px;
-   padding:0;
-   top:4%;
-   z-index: -1;
-   border-radius:10px;
-}
-#profile_pic {
-  width: 9em;
-  height: 9em;
-  margin: auto;
-  background-image: url("media/profile_pic.jpg");
-  border-radius: 50%;
-  background-size: cover;
-  z-index: 7;
-}
-#starfield {
-  display: block;
-  position: fixed;
-  top:0;
-  left:0;
-  z-index:-1;
-}
-
-@media screen and (min-width: 1300px) {
-  #trees {
-    top: 0%;
-  }
 }
 
 .flex-container {
@@ -123,42 +100,6 @@ button {
 
 .hover:hover {
   box-shadow: 0 4px 8px 0 rgba(82, 233, 233, 0.9), 0 6px 20px 0 rgba(82, 233, 233, 0.2);
-}
-/*for single element rows in flexbox*/
-.single {
-  flex-basis: 100%;
-}
-
-section /*, section>div*/{
-  opacity: 0;
-  transition: opacity 1s;
-}
-section.visible {
-  opacity: 1;
-}
-.delay {
-}
-
-/*slides*/
-.slide {
-  margin:auto;
-  background-color: rgb(54, 71, 125, .6);
-  height: 20em; /*300px;*/
-  position: relative;
-  Z-index: 1;
-  display: none;
-}
-.slide > h3{
-  margin-top: 0px;
-  padding-top: 5%;
-  margin-left: 5%;
-  text-align: left;
-  text-decoration: underline;
-}
-.slide > p{
-  /*background-color: rgb(96, 112, 159, .4);*/
-  text-align: left;
-  width: 45%;
 }
 
 /*slideshow*/
@@ -197,31 +138,26 @@ section.visible {
   display: inline-block;
 }
 
-/*contact me reveal on hover*/
-.appear {
-  display: none;
-}
-.appear-container:hover .appear {
-  display: block;
-}
 
-.none {
-  display: none;
+/** Specifically for GA pages**/
+.panel > img {
+    width:45%;
+    float:left;
 }
-
+section {
+  opacity: 1;
+  width:48%;
+}
+.accordion {
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  outline: none;
+  transition: 0.4s;
+}
 .panel {
-  position:relative;
-  flex-basis: 100%;
-  min-height: 300px;
-}
-
-.closebtn {
-  position:absolute;
-  right: 0;
-  top: 0;
-  padding: 8px 32px 8px 32px;
-  text-decoration: none;
-  font-size: 40px;
-  color: #818181;
-  transition: 0.3s;
+  min-height: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
