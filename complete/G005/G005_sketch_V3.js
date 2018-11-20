@@ -15,7 +15,7 @@
 //modify these variables
 let name = "launch2";
 let extension = ".jpg";
-let variance = 10;
+let variance = 15;
 //do not modify
 let d;
 let iteration = 0;
