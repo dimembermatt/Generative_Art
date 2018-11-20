@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <title>Belousov-Zharbotinsky Reactions</title>
+    <link rel="stylesheet" href="GA_Pages.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120550704-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-120550704-1');
+    </script>
+    <!--jQuery api host from Google-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+</head>
+
+<body>
+    <h2>Belousov-Zharbotinsky Reactions</h2>
+    <h5>Matthew Yu</h5>
+    <h5>November 20th, 2018</h5>
+    <hr>
+    <img src="description/G007/Belousov-Zharbotinsky_Reaction.png">
+    <p>
+        The Belousov-Zharbotinsky reactions is an interesting mathematical model
+        of an oscillating chemical reaction. I've heard of it before, but until
+        I saw this <a href="https://www.youtube.com/watch?v=LL3kVtc-4vY">video</a>
+        from NileRed on Youtube did I fully appreciate how mezmerizing it is.
+    </p>
+    <p>
+        This program is essentially a conversion of the Processing code by Alasdair
+        Turner in his paper <a href="http://discovery.ucl.ac.uk/17241/1/17241.pdf">
+        <i>A Simple Model of the Belousov-Zharbotinsky Reaction From First Principles</i></a>
+        into a P5 sketch that I could run easily in my browser.
+    </p>
+    <p>
+        Coincidentally, the way this reaction works in code is remarkably like a
+        cellular automata, another type of generative art I have been working with.
+        A varying concentration of chemicals, chemical A, B, and C, are spread
+        across each pixel in a canvas between the values 0 and 1. After this, for
+        each successive pass over the image, the program looks at the surrounding
+        pixels, adds up the total concentration of each chemical, and then uses
+        that to quantify a new value for the current pixel.
+    </p>
+    <p>
+        What is particularly interesting about Turner's code is that he has a depth
+        of two for each color, containing a p and a q variable. The total concentration
+        is checked from p, and the new values are written into q. p and q are set
+        to 0 and 1, respectively, at the start of the program. At the end of each
+        pixel calculation, the following control statements are described:
+        <br><br>
+        <code>
+            if(p == 0){<br>
+            &nbsp;&nbsp;p = 1;
+            &nbsp;&nbsp;q = 0;<br>
+            }else{<br>
+            &nbsp;&nbsp;p = 0;
+            &nbsp;&nbsp;q = 1;<br>
+            }
+        </code>
+        <br><br>
+    </p>
+    <p>
+        It seemed confusing at first: why would you change the pixel value right
+        after you've modified it from the pixel calculation? What the program is
+        <i>actually</i> doing is switching the index that the calculations are
+        asking. And it's doing so for each pixel, which means the first pixel
+        could be running on p values and the next one running on q values.
+        It's a bit beyond me to grasp the full implications of how this works,
+        but it does work, and it makes a pretty cool sight.
+    </p>
+    <p>
+        Here are some other pictures I've made while experimenting with the color
+        scheme, and modifying some values here and there to get this to work.
+    </p>
+    <!--G007 gallery-->
+    <div class="flex-container">
+        <section>
+          <button class="accordion"><h2>G007</h2></button>
+          <div id="G007" class="panel"></div>
+          <script>
+            let G007Container = document.getElementById("G007");
+            let G007Pictures = ["png", "amnioticFluid", "blue_and_red"];
+            for (let i = 1; i < G007Pictures.length; i++) {
+                let src = "pictures/G007_Drawings/" + G007Pictures[i] + "." + G007Pictures[0];
+                let img = new Image();
+                img.src = src;
+                G007Container.appendChild(img);
+            }
+          </script>
+        </section>
+    </div>
+    <!--expander for galleries-->
+    <script>
+      let acc = document.getElementsByClassName("accordion");
+      for (let i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          let panel = this.nextElementSibling;
+          let section = this.parentElement;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+            section.style.width = 48 + "%";
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + 200 + "px";
+            section.style.width = 98 + "%" ;
+          }
+        });
+      }
+    </script>
+</body>
+<footer>
+    This page is part of a project to document and effectively communicate code
+    and algorithms to people.
+    <div class="flex-container">
+        <a href="index.html">
+            <img src="icons/home.png" style="float:center;border:0;">
+        </a>
+    </div>
+    <div class="flex-container">
+</footer>

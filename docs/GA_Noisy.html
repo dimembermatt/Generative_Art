@@ -124,7 +124,7 @@
             let NoisyContainer = document.getElementById("NoisyGallery");
             //zero index contains extension
             //everything else is picture name
-            let NoisyPictures = ["png", "planets_s", "planets_s2", "coastline", "moon", "moon2", "nebula2", "nebula3", "spaceMountain", "wunderscape1", "wunderscape2"];
+            let NoisyPictures = ["png", "planets_s", "planets_s2", "coastline", "moon", "moon2", "spaceMountain", "nebula2", "nebula3", "wunderscape1", "wunderscape2"];
             for (let i = 1; i < NoisyPictures.length; i++) {
               let src = "pictures/Noisy/" + NoisyPictures[i] + "." + NoisyPictures[0];
               let img = new Image();
@@ -155,4 +155,10 @@
 <footer>
     This page is part of a project to document and effectively communicate code
     and algorithms to people.
+    <div class="flex-container">
+        <a href="index.html">
+            <img src="icons/home.png" style="float:center;border:0;">
+        </a>
+    </div>
+    <div class="flex-container">
 </footer>

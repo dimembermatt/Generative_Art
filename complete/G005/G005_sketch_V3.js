@@ -1,5 +1,5 @@
 /**
- * G005_sketch_V2.js.
+ * G005_sketch_V3.js.
  * Matthew Yu
  * Last Modified: 11/5/18
  * One of a series of sketches involving Generative Art.
