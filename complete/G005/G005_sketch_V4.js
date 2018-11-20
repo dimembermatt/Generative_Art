@@ -1,16 +1,15 @@
 /**
- * G005_sketch_V2.js.
+ * G005_sketch_V3.js.
  * Matthew Yu
- * Last Modified: 11/5/18
+ * Last Modified: 11/20/18
  * One of a series of sketches involving Generative Art.
  * Using Connected Components algorithm, section areas of an input picture
  * and color each area a discrete color.
  * Tested on the latest Chrome version. Recommended for pictures within 2kx2k
- * TODO: test merging objects at every collision instead of end algo recursion
  * 11/5/18 Test Results of changing pixel access:
- * Talonflame.jpg (275x287)
- *  Before  345.591s/1.621s
- *  After   1.388s/2.234s
+ *      Talonflame.jpg (275x287)
+ *      Before  345.591s/1.621s
+ *      After   1.388s/2.234s
  */
 //modify these variables
 let name = "launch2";
@@ -57,9 +56,11 @@ function mouseClicked() {
   console.log("running.");
   runAlgorithm(objMap, corrMap);
   console.log("runAlgo complete.");
-  // colorImage(objMap, corrMap);
-  // console.log("coloring complete.");
-  // updatePixels();
+  flattenMap(corrMap);
+  console.log("flattenMap complete.");
+  colorImage(objMap, corrMap);
+  console.log("coloring complete.");
+  updatePixels();
   iteration++;
   console.log(iteration);
 }
@@ -82,11 +83,11 @@ function create2dArray(columns, rows) {
 function runAlgorithm(objectMap, correlationMap) {
   let color;
   let counter = 0;
-  console.log("Height: " + height);
+  // console.log("Height: " + height);
   let t0 = performance.now();
   for (let y = 0; y < height; y++) {
-    if(y%5 === 0)
-      console.log("row:" + y);
+    // if(y%5 === 0)
+    //   console.log("row:" + y);
     for (let x = 0; x < width; x++) {
       color = getP(x, y);
       //first pixel
@@ -164,32 +165,42 @@ function runAlgorithm(objectMap, correlationMap) {
  * uses references to P5 pixels array to use algorithm
  */
 function colorImage(objectMap, correlationMap) {
-  let objID;
-  let t0 = performance.now();
-  for (let y = 0; y < height; y++) {
-      if(y%5 === 0)
-        console.log("row:" + y);
-      for (let x = 0; x < width; x++) {
-      objID = objectMap[x][y];
-      searchRef(objID, correlationMap, x, y);
+    let objID;
+    let t0 = performance.now();
+    for (let y = 0; y < height; y++) {
+        // if(y%5 === 0)
+        //   console.log("row:" + y);
+        for (let x = 0; x < width; x++) {
+            objID = objectMap[x][y];
+            setP(x, y, correlationMap[objID][2]);
+        }
     }
-  }
-  let t1 = performance.now();
-  console.log("Coloring time: " + (t1-t0) + " ms");
+    let t1 = performance.now();
+    console.log("Coloring time: " + (t1-t0) + " ms");
 }
 
-function searchRef(objID, correlationMap, x, y) {
+function searchRef(objID, startID, correlationMap) {
   for (ele of correlationMap) {
     if (ele[0] === objID) { //object reference found
       if (ele[0] === ele[1]) { //if object ID matches its reference
-        setP(x, y, ele[2]);  //set color of pixel
+        correlationMap[startID][1] = ele[0];
+        correlationMap[startID][2] = ele[2];
       } else { //object ID references another object
         objID = ele[1];
-        searchRef(objID, correlationMap, x, y);
+        searchRef(objID, startID, correlationMap);
       }
       break;
     }
   }
+}
+function flattenMap(correlationMap){
+    let t0 = performance.now();
+    for (let idx = 0; idx < correlationMap.length; idx++){
+        if(correlationMap[idx][1] != idx)
+            searchRef(idx, idx, correlationMap);
+    }
+    let t1 = performance.now();
+    console.log("Flattening time: " + (t1-t0) + " ms");
 }
 
 function getP(x, y){

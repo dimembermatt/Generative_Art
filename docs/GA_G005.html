@@ -22,6 +22,23 @@
             width: 9em;
             height: 12em;
         }
+        table {
+            margin: auto;
+            font-family: arial, sans-serif;
+            font-size: calc(8px + 1.1vw);
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
     </style>
 </head>
 
@@ -198,6 +215,72 @@
         <br><br>
         If you have any suggestions, please feel free to contact me!
     </p>
+    <hr>
+    <h4>Update 11/20/18</hr>
+    <p>
+        In preparation for optimizing Region V's DBSCAN using a correlation map
+        and a post processing pass, I went and implemented a new function for this
+        program which flattens the equivalency list before handing it to the coloring
+        function. Essentially, what I did was run through each ID in the equivalency
+        list, matched it to the base ID, and directly connected it to the base ID.
+        This way, I don't have to run each pixel recursively to find the base ID.
+    </p>
+    <p>
+        Here are the results of the optimizations: <br>(960x636 image at 10 variance
+        (equivalence list length: 110,721)
+    </p>
+    <table>
+        <tr>
+            <th>Version</th>
+            <th>Compiling</th>
+            <th>Flattening</th>
+            <th>Coloring</th>
+            <th>Detail</th>
+        </tr>
+        <tr>
+            <td>Version 2</td>
+            <td>~350xV3</td>
+            <td>N/A</td>
+            <td>~160s</td>
+            <td>First Working Version</td>
+        </tr>
+        <tr>
+            <td>Version 3</td>
+            <td>50.839s</td>
+            <td>N/A</td>
+            <td>167.579s</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Version 4.1</td>
+            <td>53.936s</td>
+            <td>55.492s</td>
+            <td>97.3ms</td>
+            <td>Flattening the Equivalency List</td>
+        </tr>
+        <tr>
+            <td>Version 4.2</td>
+            <td>42.691s</td>
+            <td>11.860s</td>
+            <td>96.7ms</td>
+            <td>Ignoring shallow equivalencies (1 == 1)</td>
+        </tr>
+    </table>
+    <p>
+        Of course, these are all approximate times and may vary wildly depending
+        on how much resource your computer allocates to it, but having a ~350
+        increase in algorithm efficiency and a >10x increase in coloring (flattening
+        and coloring) efficiency means that my optimizations have reduced the amount
+        of time to process the image from hours to mere minutes.
+    </p>
+    <p>
+        Confirming the efficacy of these results means that I intend to apply
+        what I've learned here to DBSCAN for our Region V computer vision process.
+        We will be analyzing tens of thousands of frames of images in succession
+        with this process, which means that the optimization gains here will be
+        extremely useful.
+    </p>
+
     <!--expander for galleries-->
     <script>
       let acc = document.getElementsByClassName("accordion");
