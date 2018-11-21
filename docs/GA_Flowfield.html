@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <title>Flow Fields</title>
+    <link rel="stylesheet" href="GA_Pages.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120550704-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-120550704-1');
+    </script>
+    <!--jQuery api host from Google-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+</head>
+
+<body>
+    <h2>Flow Fields</h2>
+    <h5>Matthew Yu</h5>
+    <h5>November 20th, 2018</h5>
+    <hr>
+    <p>
+        Flow Field is one of the earliest sets of generative art programs that
+        I've made, based off of Dan Schiffman's P5JS tutorial
+        <a href="https://www.youtube.com/watch?v=vdgiqMkFygc&list=PLRqwX-V7Uu6Z9hI4mSgx2FlE5w8zvjmEy">
+        series</a>. At thetime of making this, I was particurly intrigued by the
+        use of particle systems to simulate movement and forces; I wanted to use
+        Perlin Noise in order to create a field of "movement", enabling particles
+        inside of this field to follow naturally determined paths.
+    </p>
+    <img style="width:40%;" src="description/Flowfield/Flowfield1.png">
+    <p>
+        I generated the map of Perlin noise by setting a vector at each x,y
+        coordinate of the canvas; the angle of the vector is of the function
+    </p>
+    <div align="center">
+        <script type="math/tex">angle = noise(xOff, yOff, zOff) * 2\pi * 5</script>
+    </div>
+    <p>
+        The perlin noise function is similar to the random function except that
+        the perlin noise function is <i>differentiable</i>, which means that
+        between any two points, say
+    </p>
+    <div align="center">
+        <script type="math/tex">f(t) \quad and \quad f(t + \vec{\Delta} t)</script>,
+    </div>
+    <p>
+        There will be a set of points between the two times such that the function
+        will always be continuous (no breaks), and will never have a an infinite
+        vertical slope (no jumping between values). Below is an example of a
+        differentiable function.
+    </p>
+    <img style="width:40%;" src="description/Flowfield/differentiable.png">
+    <p>
+        This effect is displayed in our noise function by the direction and color
+        of our vectors of the flowfield; each one is slightly offset to each other
+        relative to their position and to time. None of them will immediately
+        change direction.
+    </p>
+    <p>
+        This means that a particle in the field will experience gradual changes
+        in its force, allowing it move much like an object in a current of water.
+    </p>
+    <p>
+        I created a particle class whose movement is based on the "force" of the
+        vector in which the particle exists at (think in units of cells, [0, 0], etc)
+        and added some color. Here are the results!
+    </p>
+    <!--flowfield gallery-->
+    <div class="flex-container">
+        <section>
+            <button class="accordion"><h2>FlowField</h2></button>
+            <div id="FlowFieldGallery" class="panel"></div>
+            <script>
+                let FlowFieldContainer = document.getElementById("FlowFieldGallery");
+                let FlowFieldPictures = ["png", "flowfield1", "flowfield2", "flowfield3", "flowfield4", "flowfield5", "flowfield6", "heatmap", "rainbowrain", "wormtunnels"];
+                for (let i = 1; i < FlowFieldPictures.length; i++) {
+                    let src = "pictures/FlowField/" + FlowFieldPictures[i] + "." + FlowFieldPictures[0];
+                    let img = new Image();
+                    img.src = src;
+                    FlowFieldContainer.appendChild(img);
+                }
+            </script>
+        </section>
+    </div>
+    <p>
+        For the ones with the particles hidden, the field looks a lot like a heat
+        map, although the color is based on the direction and the time of the vector
+        rather than its magnitude. I would like to create another program in the
+        future that uses a sort of gravity as the force, and have the color be
+        based on the magnitude of that gravity. For example, I could use a grayscale
+        image as a base and the darker the pixel the stronger the gravity...
+    </p>
+
+    <!--expander for galleries-->
+    <script src="gallery-expander.js"></script>
+</body>
+<footer>
+    This page is part of a project to document and effectively communicate code
+    and algorithms to people.
+    <div class="flex-container">
+        <a href="index.html">
+            <img src="icons/home.png" style="float:center;border:0;">
+        </a>
+    </div>
+    <div class="flex-container">
+</footer>

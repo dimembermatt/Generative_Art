@@ -8,12 +8,13 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120550704-1"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      gtag('config', 'UA-120550704-1');
+        gtag('config', 'UA-120550704-1');
     </script>
+
     <!--jQuery api host from Google-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
@@ -94,24 +95,9 @@
           </script>
         </section>
     </div>
+
     <!--expander for galleries-->
-    <script>
-      let acc = document.getElementsByClassName("accordion");
-      for (let i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-          this.classList.toggle("active");
-          let panel = this.nextElementSibling;
-          let section = this.parentElement;
-          if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-            section.style.width = 48 + "%";
-          } else {
-            panel.style.maxHeight = panel.scrollHeight + 200 + "px";
-            section.style.width = 98 + "%" ;
-          }
-        });
-      }
-    </script>
+    <script src="gallery-expander.js"></script>
 </body>
 <footer>
     This page is part of a project to document and effectively communicate code

@@ -8,11 +8,11 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120550704-1"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      gtag('config', 'UA-120550704-1');
+        gtag('config', 'UA-120550704-1');
     </script>
     <!--jQuery api host from Google-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -83,14 +83,14 @@
             <button class="accordion"><h2>G003 V1</h2></button>
             <div id="G003V1Gallery" class="panel"></div>
             <script>
-              let G003V1Container = document.getElementById("G003V1Gallery");
-              let G003V1Pictures = ["png", "beams", "colorBurst", "cylindricalSections",
-                "diffraction", "diffraction2", "dispersion", "pixelSun", "ridges", "vortex"];
-              for (let i = 1; i < G003V1Pictures.length; i++) {
-                let src = "pictures/G003_Drawings/V1/" + G003V1Pictures[i] + "." + G003V1Pictures[0];
-                let img = new Image();
-                img.src = src;
-                G003V1Container.appendChild(img);
+                let G003V1Container = document.getElementById("G003V1Gallery");
+                let G003V1Pictures = ["png", "beams", "colorBurst", "cylindricalSections",
+                    "diffraction", "diffraction2", "dispersion", "pixelSun", "ridges", "vortex"];
+                for (let i = 1; i < G003V1Pictures.length; i++) {
+                    let src = "pictures/G003_Drawings/V1/" + G003V1Pictures[i] + "." + G003V1Pictures[0];
+                    let img = new Image();
+                    img.src = src;
+                    G003V1Container.appendChild(img);
               }
             </script>
         </section>
@@ -126,15 +126,15 @@
             <button class="accordion"><h2>Testing a and b</h2></button>
             <div id="G003V2Experiments" class="panel"></div>
             <script>
-              let G003V2Experiments = document.getElementById("G003V2Experiments");
-              let G003V2ExpPictures = ["png", "a_2b_93", "a_2b_97", "a_2b1_01", "a_4b1_01",
-                "a_17b1_01", "a2b1_1"];
-              for (let i = 1; i < G003V2ExpPictures.length; i++) {
-                let src = "description/G003/" + G003V2ExpPictures[i] + "." + G003V2ExpPictures[0];
-                let img = new Image();
-                img.src = src;
-                G003V2Experiments.appendChild(img);
-              }
+                let G003V2Experiments = document.getElementById("G003V2Experiments");
+                let G003V2ExpPictures = ["png", "a_2b_93", "a_2b_97", "a_2b1_01", "a_4b1_01",
+                    "a_17b1_01", "a2b1_1"];
+                for (let i = 1; i < G003V2ExpPictures.length; i++) {
+                    let src = "description/G003/" + G003V2ExpPictures[i] + "." + G003V2ExpPictures[0];
+                    let img = new Image();
+                    img.src = src;
+                    G003V2Experiments.appendChild(img);
+                }
             </script>
         </section>
     </div>
@@ -169,14 +169,14 @@
             <button class="accordion"><h2>G003 V3</h2></button>
             <div id="G003V3Gallery" class="panel"></div>
             <script>
-              let G003V3Container = document.getElementById("G003V3Gallery");
-              let G003V3Pictures = ["png", "001", "flowerPetal"];
-              for (let i = 1; i < G003V3Pictures.length; i++) {
-                let src = "pictures/G003_Drawings/V3/" + G003V3Pictures[i] + "." + G003V3Pictures[0];
-                let img = new Image();
-                img.src = src;
-                G003V3Container.appendChild(img);
-              }
+                let G003V3Container = document.getElementById("G003V3Gallery");
+                let G003V3Pictures = ["png", "001", "flowerPetal"];
+                for (let i = 1; i < G003V3Pictures.length; i++) {
+                    let src = "pictures/G003_Drawings/V3/" + G003V3Pictures[i] + "." + G003V3Pictures[0];
+                    let img = new Image();
+                    img.src = src;
+                    G003V3Container.appendChild(img);
+                }
             </script>
         </section>
     </div>
@@ -189,24 +189,9 @@
         One day I will probably return to this project and come back with even more
         amazing phase maps, but I'm satisfied with what I have now.
     </p>
+
     <!--expander for galleries-->
-    <script>
-      let acc = document.getElementsByClassName("accordion");
-      for (let i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-          this.classList.toggle("active");
-          let panel = this.nextElementSibling;
-          let section = this.parentElement;
-          if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-            section.style.width = 48 + "%";
-          } else {
-            panel.style.maxHeight = panel.scrollHeight + 200 + "px";
-            section.style.width = 98 + "%" ;
-          }
-        });
-      }
-    </script>
+    <script src="gallery-expander.js"></script>
 </body>
 <footer>
     This page is part of a project to document and effectively communicate code
