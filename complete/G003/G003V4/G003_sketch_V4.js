@@ -4,15 +4,16 @@
  * Last Modified: 1/2/19
  * Implementing standard map chaos model
  * One of a series of sketches involving Generative Art.
+ * https://en.wikipedia.org/wiki/Standard_map
  * https://en.wikipedia.org/wiki/Kicked_rotator
  * The related equations are
- * Y(n+1) = Y(n) + Ksin(X(n)) where Y represents p (momentum)
- * X(n+1) = X(n) + Y(n+1)
+ * Y(n+1) = Y(n) + Ksin(X(n)) where Y represents p (momentum) mod TWO_PI
+ * X(n+1) = X(n) + Y(n+1) mod TWO_PI
  */
 let numParticles = 2500;
 let lifetime = 50;
 let particles = [];
-let k = .1;
+let k = .971635;
 let r = 250, g = 0, b = 127, a = 255;
 
 function setup() {
@@ -32,13 +33,13 @@ function draw() {
     particle[2] = particle[2] - 1;
     //draw
     stroke(map(particle[2], 0, lifetime, 255, 0), g, b, a);
-    point(particle[0]*120+cWidth/4, particle[1]*120+cHeight/2);
+    point(particle[0]*140+cWidth/4, particle[1]*140+cHeight/3);
   }
   let timer = lifetime;
   if (frameCount%timer == 0) {
     g = (g + 2) % 256;
     b = (b + 2) % 256;
-    k = (k+.1)%10;
+    // k = (k+.1)%10;
   }
 }
 

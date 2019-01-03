@@ -23,7 +23,7 @@
     <!-- insert Strange Object2 thumbnail here-->
     <h2>G003 - Henon Strange Attractor</h2>
     <h5>Matthew Yu</h5>
-    <h5>October 27th, 2018</h5>
+    <h5>January 2nd, 2019</h5>
     <hr>
     <img src="pictures\G003_Drawings\V2\strangeObject2.png">
     <p>
@@ -95,6 +95,8 @@
             </script>
         </section>
     </div>
+    <hr>
+    <h4>Update 8/7/18:</h4>
     <p>
         So V1 looks nice, but it wasn't quite what I was looking for. So instead
         I experimented with another set of functions for V2,
@@ -159,6 +161,8 @@
             </script>
         </section>
     </div>
+    <hr>
+    <h4>Update 10/29/18:</h4>
     <p>
         I went back and tried the same equations with V1 again, using the lessons
         I've learned from V2 to better bound the object and get it to display,
@@ -186,10 +190,57 @@
         A couple sources of error might be the scale that I'm on. It's possible that
         (judging from Bourke's source code for <i>Henon Phase Deep</i>) I may be
         a scale of 10^2 off from the size of the world that these particles move in.
-        One day I will probably return to this project and come back with even more
-        amazing phase maps, but I'm satisfied with what I have now.
     </p>
-
+    <hr>
+    <h4>Update 1/2/19:</h4>
+    <p>
+        This update plays with a the Standard map, or the Chirikov standard map.
+        I was looking into chaotic systems to model chaotic mixing, and stumbled
+        onto kicked rotators and then here.
+    </p>
+    <!-- insert chirikov_standard_map.png-->
+    <img src="pictures\G003_Drawings\V4\chirikov_standard_map.png">
+    <p>
+        The full gallery for these images are below, and runnable JS example
+        can be found <a href="..\complete\G003\G003V4\G003_V4.html">here</a>.
+    </p>
+    <div class="flex-container">
+        <section>
+            <button class="accordion"><h2>G003 V4</h2></button>
+            <div id="G003V4Gallery" class="panel"></div>
+            <script>
+                let G003V4Container = document.getElementById("G003V4Gallery");
+                let G003V4Pictures = ["png", "04", "05", "01", "03", "06",
+                    "07", "xenon", "fanblades", "light", "petals", "wave"];
+                for (let i = 1; i < G003V4Pictures.length; i++) {
+                    let src = "pictures/G003_Drawings/V4/" + G003V4Pictures[i] + "." + G003V4Pictures[0];
+                    let img = new Image();
+                    img.src = src;
+                    G003V4Container.appendChild(img);
+                }
+            </script>
+        </section>
+    </div>
+    <!-- insert 02.png-->
+    <p>
+        The really interesting thing that occurred while adjusting the parameters
+        for this program is the range of maps under different bounds. For example,
+        the first image in this update is bounded to p:{-PI, PI}, x:{0, 2 PI}.
+        However, images like the first two in the gallery share a very strong
+        symmetry when unbounded. There's a somewhat obvious dividing line across
+        the center and a less obvious one diagonally (this shows up quite early
+        while iterating across the K constant; the maps are split along the diagonal
+        and slowly connect as K increases). This underscores the importance of
+        bounding conditions when looking for a solution, which gives me another
+        insight into why my Henon maps aren't looking up to par.
+    </p>
+    <p>
+        Below is a very tall image of the unbounded standard map (P is not modded
+        by 2 PI and is no longer periodic). The diagonal symmetry axis is very
+        evident at the top, and as you go down the image, you can see the very
+        order structure eventually collapsing into noise and chaos.
+    </p>
+    <img src="pictures\G003_Drawings\V4\02.png">
     <!--expander for galleries-->
     <script src="gallery-expander.js"></script>
 </body>
