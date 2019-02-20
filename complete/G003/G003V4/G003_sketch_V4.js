@@ -10,15 +10,15 @@
  * Y(n+1) = Y(n) + Ksin(X(n)) where Y represents p (momentum) mod TWO_PI
  * X(n+1) = X(n) + Y(n+1) mod TWO_PI
  */
-let numParticles = 2500;
+let numParticles = 4000;
 let lifetime = 50;
 let particles = [];
 let k = .971635;
 let r = 250, g = 0, b = 127, a = 255;
 
 function setup() {
-  cWidth = windowWidth * .9998;
-  cHeight = windowHeight * .995;
+  cWidth = 2048;//windowWidth * .9998;
+  cHeight = 1536;//windowHeight * .995;
   let cnv = createCanvas(cWidth, cHeight);
   for (let i = 0; i < numParticles; i++) {
     particles.push([random(0, TWO_PI), random(-PI/2, PI/2), lifetime]);
@@ -33,7 +33,7 @@ function draw() {
     particle[2] = particle[2] - 1;
     //draw
     stroke(map(particle[2], 0, lifetime, 255, 0), g, b, a);
-    point(particle[0]*140+cWidth/4, particle[1]*140+cHeight/3);
+    point(particle[0]*250+cWidth/8, particle[1]*200+cHeight/2, .1, .1);
   }
   let timer = lifetime;
   if (frameCount%timer == 0) {
