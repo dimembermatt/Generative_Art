@@ -241,6 +241,57 @@
         order structure eventually collapsing into noise and chaos.
     </p>
     <img src="pictures\G003_Drawings\V4\02.png">
+    <h4>Update 3/21/19:</h4>
+    <p>
+        This update is less of an exploration of more chaos theory and more of a demonstration
+        of a port of the previous update into C++ using OpenFrameworks. The expectation
+        was to achieve higher speed and greater quality than P5JS, and the results were
+        mixed to say the least.
+    </p>
+    <img src="pictures\G003_Drawings\V5\standardMap1.png" style="width:80%">
+    <p>
+        Above is the one of the first satisfactory images produced from the C++ port.
+        While there appears to be satisfactory quality in the image, the time needed
+        to produce the image compared to that of the JS sketch was larger by order
+        of magnitudes. In addition, the C++ version produced artefacts in the process
+        that are particularly visible radially from the center eye. These distortions
+        mar the quality of the image.
+    </p>
+    <p>
+        However, an acceptable advantage of the C++ port is that it reduces a shimmering
+        effect in the JS sketch that tends to visually hide features in the image.
+        By allowing the program to layer hundreds of exposures in the image, high resolution
+        features begin to stand out.
+    </p>
+    <p>
+        With a little more tweaking (read: hours more), the program created this
+        very nice picture after about 9 hours and 60 thousand exposures.
+    </p>
+    <img src="pictures\G003_Drawings\V5\standardMap4.png" style="width:100%">
+    <p>
+        This program was massively sped up by using an array instead of
+        a vector/array list. Some function calls, such as ofSetColor() were reduced
+        by running each particle individually n times (I set n to be the lifetime
+        of each particle) before moving to the next particle in the generation,
+        and removing extraneous color change instructions.
+    </p>
+    <p>
+        I also replaced the drawing buffer by drawing into an fbo (another renderer),
+        and then drawing all the changes at once to the screen at the end of each
+        generation. I also got rid of the artefacts by adding a random offset when
+        drawing each particle. The image now looks much cleaner as a result.
+    </p>
+    <p>
+        An interesting thing to note is that the colors of each particle were
+        decided based on each particle's initial conditions; a closer look into
+        the minute details of the picture reveals cohesive and distinct groupings of
+        color.
+    </p>
+    <p>
+        With a sufficiently powerful machine, is it possible that even
+        more detail is hidden within the noise?
+    </p>
+
     <!--expander for galleries-->
     <script src="gallery-expander.js"></script>
 </body>
