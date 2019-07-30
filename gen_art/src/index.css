@@ -15,30 +15,11 @@ code {
     monospace;
 }
 
-.typewriter {
-    width:40vw;
-    margin: auto;
-}
 .typewriter h1 {
     font-family: 'Darker Grotesque', sans-serif;
-    overflow: hidden;
-    border-right: .15em solid orange;
-    white-space: nowrap;
-    margin: 0 auto;
-    letter-spacing: .15em;
-    animation:
-        typing 3.5s steps(50, end),
-        blinking-cursor .5s step-end 10;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blinking-cursor {
-  from, to { border-color: transparent }
-  50% { border-color: orange }
+    font-size: 3em;
+    letter-spacing: .25em;
+    text-align: center;
 }
 
 footer a {
