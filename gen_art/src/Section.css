@@ -1,0 +1,47 @@
+.section {
+    background-color: white;
+    padding: 0 5vw;
+    height: 30vh;
+    width: 90vw;
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 10px;
+    border-style: solid;
+}
+
+/* preferably, the thumbnail size is of 1x1 dimension
+if it is not, crop and center it to get the best result */
+img {
+    background-color: yellow;
+    grid-column: 2 / span 4;
+    grid-row: 2 / span 4;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    max-width:100%;
+    /* object-fit: contain; */
+    align-self: center;    /* vertical centering*/
+}
+
+.details {
+    background-color: green;
+    grid-column: 7 / span 11;
+    grid-row: 2 / span 4;
+}
+
+.details h1 {
+    background-color: blue;
+    grid-column: 6 / span 11;
+    grid-row: 2 / span 1;
+    margin: 3%;
+}
+
+.details p {
+    background-color: orange;
+    grid-column: 6 / span 11;
+    grid-row: 3 / span 3;
+    margin: 3%;
+}
+
+ul {
+    padding: 0;
+}
