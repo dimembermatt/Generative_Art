@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ReactMarkdown from 'react-markdown';
 
+// CSS files
 import './Section.css';
 import 'github-markdown-css/github-markdown.css';
 
@@ -15,12 +16,6 @@ const markdownFiles = markdownContext
     .keys()
     .map((filename) => markdownContext(filename));
 console.log(markdownFiles);
-
-class SectionPage extends React.Component {
-    constructor(props) {
-
-    }
-}
 
 class Section extends React.Component {
     constructor(props) {
@@ -57,7 +52,6 @@ class Section extends React.Component {
             .then(result => result.text())
             .then(result => this.setState({text: result}));
         // console.log(file);
-        // grab the first x characters
 
         // append a hyperlink to more...
     }
