@@ -10,34 +10,59 @@ const markdownContext = require.context('./assets/data/sections/', false, /\.md$
 const markdownFiles = markdownContext
     .keys()
     .map((filename) => markdownContext(filename));
-console.log(markdownFiles);
+// console.log(markdownFiles);
 
-function Section(props) {
-    // generate thumbnail
-    let thumbnailURL = '';
-    if(props.thumbnailURL !== '')
-        thumbnailURL = images('./' + props.thumbnailURL);
-    else
-        thumbnailURL = images('./moon2.png');
+class Section extends React.Component {
+    constructor(props) {
+        console.log("Section " + props.name);
+        // props are still accessible through super constructor
+        super(props);
+        // default set state for derived variables
+        this.state = {
+            fileURL: '',
+            thumbnailURL: '',
+            text: ''
+        }
 
-    // generate section text blurb
-    // first, find the url of the matching section
+        // generate thumbnail
+        if(props.thumbnailURL !== '')
+            this.state.thumbnailURL = images('./' + props.thumbnailURL);
+        else
+            this.state.thumbnailURL = images('./moon2.png');
 
-    // load that file
+        // generate section text blurb
+        // first, find the url of the matching section
+        var that = this;
+        markdownFiles.forEach(function(file) {
+            if(file.includes(props.sectionID))
+                that.state.fileURL = file;
+        });
+    }
 
-    // grab the first x characters
+    // reactjs.org says that this function is a good place to load remote data, say from your github server
+    componentDidMount(){
+        // load that file
+        console.log(this.state.fileURL);
+        fetch(this.state.fileURL)
+            .then(result => result.text())
+            .then(result => this.setState({text: result}));
+        // console.log(file);
+        // grab the first x characters
 
-    // append a hyperlink to more...
+        // append a hyperlink to more...
+    }
 
-    return (
-        <div className="section">
-            <img className="thumbnail" src={thumbnailURL} alt={props.thumbnailURL}></img>
-            <div className="details">
-                <h1>Hello, {props.name}</h1>
-                <p>first xx words...</p>
+    render(){
+        return (
+            <div className="section">
+                <img className="thumbnail" src={this.state.thumbnailURL} alt={this.props.thumbnailURL}></img>
+                <div className="details">
+                    <h1>{this.props.name}</h1>
+                    <p>{this.state.text}</p>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default Section;

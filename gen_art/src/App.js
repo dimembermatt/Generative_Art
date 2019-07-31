@@ -10,7 +10,7 @@ function App() {
             key={section.title.toString()}
             name={section.title}
             thumbnailURL={section.thumbnailURL}
-            sectionURL={section.sectionID}
+            sectionID={section.sectionID}
             >
         </Section>
     );

@@ -18,18 +18,19 @@ img {
     grid-row: 2 / span 4;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     max-width:100%;
-    /* object-fit: contain; */
+    max-height:100%;
     align-self: center;    /* vertical centering*/
 }
 
 .details {
+    height: 100%;
     background-color: green;
     grid-column: 7 / span 11;
     grid-row: 2 / span 4;
 }
 
 .details h1 {
-    background-color: blue;
+    background-color: lightblue;
     grid-column: 6 / span 11;
     grid-row: 2 / span 1;
     margin: 3%;
@@ -40,7 +41,19 @@ img {
     grid-column: 6 / span 11;
     grid-row: 3 / span 3;
     margin: 3%;
+
+    max-height: calc(30vh/6*2 + .3em);
+    white-space: pre-wrap;
+    overflow: hidden;
 }
+
+.details p:hover{
+    background-color: yellow;
+    background-color: rgba(50, 50, 50, .6);
+    opacity: .2;
+    border-radius: 5%;
+}
+
 
 ul {
     padding: 0;
