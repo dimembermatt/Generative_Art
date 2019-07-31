@@ -1,6 +1,10 @@
 import React from 'react';
-// import ReactMarkdown from 'react-markdown';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import ReactMarkdown from 'react-markdown';
+
 import './Section.css';
+import 'github-markdown-css/github-markdown.css';
+
 
 // get location of images folder in webpack
 const images = require.context('./assets/images', true);
@@ -10,7 +14,13 @@ const markdownContext = require.context('./assets/data/sections/', false, /\.md$
 const markdownFiles = markdownContext
     .keys()
     .map((filename) => markdownContext(filename));
-// console.log(markdownFiles);
+console.log(markdownFiles);
+
+class SectionPage extends React.Component {
+    constructor(props) {
+
+    }
+}
 
 class Section extends React.Component {
     constructor(props) {
@@ -57,8 +67,8 @@ class Section extends React.Component {
             <div className="section">
                 <img className="thumbnail" src={this.state.thumbnailURL} alt={this.props.thumbnailURL}></img>
                 <div className="details">
-                    <h1>{this.props.name}</h1>
-                    <p>{this.state.text}</p>
+                    <ReactMarkdown className="markdown-body" source={this.state.text} />
+                    <a id="link" href="../public/Grids.html">See More...</a>
                 </div>
             </div>
         );

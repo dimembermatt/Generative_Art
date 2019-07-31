@@ -1,3 +1,27 @@
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    /* margin: 0 auto; */
+    margin: 2%;
+    height:95%;
+
+    white-space: pre-wrap;
+    overflow: hidden;
+}
+
+.markdown-body:hover{
+    background-color: rgba(50, 50, 50, .6);
+    opacity: .2;
+    border-radius: 5px;
+}
+
+@media (max-width: 767px) {
+    .markdown-body {
+        margin: 1%;
+    }
+}
+
 .section {
     background-color: white;
     padding: 0 5vw;
@@ -7,13 +31,12 @@
     grid-template-columns: repeat(18, 1fr);
     grid-template-rows: repeat(6, 1fr);
     grid-gap: 10px;
-    border-style: solid;
 }
 
 /* preferably, the thumbnail size is of 1x1 dimension
 if it is not, crop and center it to get the best result */
 img {
-    background-color: yellow;
+    /* background-color: yellow; */
     grid-column: 2 / span 4;
     grid-row: 2 / span 4;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -23,38 +46,23 @@ img {
 }
 
 .details {
-    height: 100%;
-    background-color: green;
+    /* background-color: green; */
     grid-column: 7 / span 11;
     grid-row: 2 / span 4;
+    position:relative;
 }
-
-.details h1 {
-    background-color: lightblue;
-    grid-column: 6 / span 11;
-    grid-row: 2 / span 1;
-    margin: 3%;
-}
-
-.details p {
-    background-color: orange;
-    grid-column: 6 / span 11;
-    grid-row: 3 / span 3;
-    margin: 3%;
-
-    max-height: calc(30vh/6*2 + .3em);
-    white-space: pre-wrap;
-    overflow: hidden;
-}
-
-.details p:hover{
-    background-color: yellow;
-    background-color: rgba(50, 50, 50, .6);
-    opacity: .2;
-    border-radius: 5%;
-}
-
 
 ul {
     padding: 0;
+}
+
+.details > #link {
+    visibility: hidden;
+    position: absolute;
+    left: 45%;
+    top: 45%;
+}
+
+.details:hover > #link {
+    visibility:visible;
 }

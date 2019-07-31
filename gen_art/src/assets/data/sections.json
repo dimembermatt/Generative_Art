@@ -6,7 +6,7 @@
 {
     "title": "Layered Nodes",
     "thumbnailURL": "",
-    "sectionID": "introduction"
+    "sectionID": "layered_nodes"
 },
 {
     "title": "Grids",
@@ -16,10 +16,10 @@
 {
     "title": "Henon Strange Attractor",
     "thumbnailURL": "",
-    "sectionID": "introduction"
+    "sectionID": "henon_strange_attractor"
 },
 {
     "title": "Block Art",
     "thumbnailURL": "",
-    "sectionID": "introduction"
+    "sectionID": "block_art"
 }]
