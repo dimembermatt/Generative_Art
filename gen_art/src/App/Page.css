@@ -1,0 +1,23 @@
+.markdown-body-full {
+    background-color: rgba(255, 255, 255, .6);
+
+    box-sizing: border-box;
+    width: 80vw;
+    min-width: 300px;
+
+    /* margin: 0 auto; */
+    margin: 2% auto;
+    height:95%;
+
+    white-space: pre-wrap;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.markdown-body-full > h1, h5, p, a {
+    padding: 0% 5%;
+}
+
+.markdown-body-full > ul {
+    padding: 0% 10%;
+}

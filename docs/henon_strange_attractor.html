@@ -1,0 +1,231 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" href="github-markdown.css">
+<link rel="stylesheet" href="ga_pages.css">
+<style>
+.markdown-body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 1100px;
+margin: 0 auto;
+padding: 45px;
+}
+
+@media (max-width: 767px) {
+.markdown-body {
+padding: 15px;
+}
+}
+</style>
+</head>
+<body>
+<article class="markdown-body">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+<h1>G003 - Henon Strange Attractor</h1>
+
+<h4>January 2nd, 2019</h4>
+
+<p>Henon Strange Attractor is a particularly prominent example of chaos theory, where slightly different initial conditions can cause a vast difference in result. I was delighted when I stumbled over the Henon Phase diagrams of <a href="http://paulbourke.net/fractals/henonphase/">Paul Bourke</a> and <a href="http://www.complexification.net/gallery/machines/henonPhaseDeep/">Jared Tarbell</a>.</p>
+
+<p>So I decided to make my own.</p>
+
+<p><img src="./images/henon_strange_attractor/V1/ridges.png" alt="ridges" /></p>
+
+<p>The first iteration of this program uses the equations:</p>
+
+<script type="math/tex">x_{n+1} = x_n \cos{a} - (y_n - (x_{n2}^2)) \sin{a}</script>
+
+<script type="math/tex">y_{n+1} = x_n \sin{a} + (y_n - (x_{n2}^2)) \cos{a}</script>
+
+<p>The general control flow is:</p>
+
+<ul>
+<li>Create <em>n</em> amount of particles, each with a random position and add them all to a set H.</li>
+<li>For an alpha a (the working version currently uses -15, but feel free to experiment), calculate cos(a) and sin(a).</li>
+<li>For each particle, update their position with the equations. If their position extends beyond the canvas, reset their position.</li>
+</ul>
+
+<p>The following is my initial result, after coloring the particles after x amount rounds and making it that a increases by a linear amount every couple rounds. There is an issue of drawing the full shape of the pixel image within the canvas size, so I also added a scaling factor (in this case, .1) to shrink the resultant image.</p>
+
+<p><img src="./images/henon_strange_attractor/V1/colorBurst.png" alt="colorBurst" /></p>
+
+<p>Colorful, but not very interesting. After tinkering with alpha values a bit more, I started coming out with images such as Ridges at the top of this section and Dispersion below.</p>
+
+<p><img src="./images/henon_strange_attractor/V1/dispersion.png" alt="dispersion" /></p>
+
+<p>An interesting artefact of my process, by randomizing the color of each pixel and rotating/shifting the general position of the shape every couple rounds, is the separation of particles into discrete sections sorted by color. The color sections don't seem to have any pattern in which they are sorted, which makes the phenomenon even more intriguing. The V1 gallery is below.</p>
+
+<div class="flex-container">
+    <section>
+        <button class="accordion"><h2>G003 V1</h2></button>
+        <div id="G003V1Gallery" class="panel"></div>
+        <script>
+            let G003V1Container = document.getElementById("G003V1Gallery");
+            let G003V1Pictures = ["png", "beams", "colorBurst", "cylindricalSections",
+                "diffraction", "diffraction2", "dispersion", "pixelSun", "ridges", "vortex"];
+            for (let i = 1; i < G003V1Pictures.length; i++) {
+                let src = "./images/henon_strange_attractor/V1/" + G003V1Pictures[i] + "." + G003V1Pictures[0];
+                let img = new Image();
+                img.src = src;
+                G003V1Container.appendChild(img);
+          }
+        </script>
+    </section>
+</div>
+
+<h3>Version 2</h3>
+
+<h4>8/7/18</h4>
+
+<p>So V1 looks nice, but it wasn't quite what I was looking for. So instead I experimented with another set of functions for V2,</p>
+
+<script type="math/tex">x_{n+1} = 1 - a*x(n)^2 + x(n)</script>
+
+<script type="math/tex">y_{n+1} = b*x(n)</script>
+
+<p>A little simpler, and hopefully with better results.</p>
+
+<p>I used the same process for V1, but instead of checking if the particle drops off the canvas, I gave each particle a lifetime and replaced them every time they die.</p>
+
+<p><img src="./images/henon_strange_attractor/V2/shell.png" alt="shell" /></p>
+
+<p>And tada! We're getting a pattern here! If we zoom out and let the program simmer for a couple minutes..</p>
+
+<p><img src="./images/henon_strange_attractor/V2/bouquet.png" alt="bouquet" /></p>
+
+<p>The initial values are a(.2) and b(1.01). After experimenting with it, here are the visual differences when a and b are altered to the below values.</p>
+
+<div class="flex-container">
+    <section>
+        <button class="accordion"><h2>Testing a and b</h2></button>
+        <div id="G003V2Experiments" class="panel"></div>
+        <script>
+            let G003V2Experiments = document.getElementById("G003V2Experiments");
+            let G003V2ExpPictures = ["png", "a_2b_93", "a_2b_97", "a_2b1_01", "a_4b1_01",
+                "a_17b1_01", "a2b1_1"];
+            for (let i = 1; i < G003V2ExpPictures.length; i++) {
+                let src = "./images/henon_strange_attractor/" + G003V2ExpPictures[i] + "." + G003V2ExpPictures[0];
+                let img = new Image();
+                img.src = src;
+                G003V2Experiments.appendChild(img);
+            }
+        </script>
+    </section>
+</div>
+
+<p>After experimenting a lot more with those values, here are some of the more interesting results that I came up with:</p>
+
+<div class="flex-container">
+    <section>
+        <button class="accordion"><h2>G003 V2</h2></button>
+        <div id="G003V2Gallery" class="panel"></div>
+        <script>
+            let G003V2Container = document.getElementById("G003V2Gallery");
+            let G003V2Pictures = ["png", "bouquet", "claws", "jellyfish", "outline",
+                "nikeLogo", "strangeObject", "strangeObject2", "brightman"];
+            for (let i = 1; i < G003V2Pictures.length; i++) {
+                let src = "./images/henon_strange_attractor/V2/" + G003V2Pictures[i] + "." + G003V2Pictures[0];
+                let img = new Image();
+                img.src = src;
+                G003V2Container.appendChild(img);
+            }
+        </script>
+    </section>
+</div>
+
+<h3>Version 3</h3>
+
+<h4>10/29/18</h4>
+
+<p>I went back and tried the same equations with V1 again, using the lessons I've learned from V2 to better bound the object and get it to display, but unfortunately this was the best result I could get.</p>
+
+<div class="flex-container">
+    <section>
+        <button class="accordion"><h2>G003 V3</h2></button>
+        <div id="G003V3Gallery" class="panel"></div>
+        <script>
+            let G003V3Container = document.getElementById("G003V3Gallery");
+            let G003V3Pictures = ["png", "001", "flowerPetal"];
+            for (let i = 1; i < G003V3Pictures.length; i++) {
+                let src = "./images/henon_strange_attractor/V3/" + G003V3Pictures[i] + "." + G003V3Pictures[0];
+                let img = new Image();
+                img.src = src;
+                G003V3Container.appendChild(img);
+            }
+        </script>
+    </section>
+</div>
+
+<p>It's a little more interesting, and definitely more in line with what I expected V1 to be, but definitely not what Tarbell or Bourke have created. A couple sources of error might be the scale that I'm on. It's possible that (judging from Bourke's source code for <em>Henon Phase Deep</em>) I may be a scale of 10^2 off from the size of the world that these particles move in.</p>
+
+<h3>Version 4</h3>
+
+<h4>1/2/19</h4>
+
+<p>This update plays with the Standard map, or the Chirikov standard map. I was looking into chaotic systems to model chaotic mixing and stumbled onto kicked rotators, which led me to the Standard map.</p>
+
+<p><img src="./images/henon_strange_attractor/V4/chirikov_standard_map.png" alt="Chirikov Standard Map" /></p>
+
+<p>The full gallery for these images are below, and runnable JS example
+can be found <a href="./res/G003/page/G003_V4.html">here</a>.</p>
+
+<div class="flex-container">
+    <section>
+        <button class="accordion"><h2>G003 V4</h2></button>
+        <div id="G003V4Gallery" class="panel"></div>
+        <script>
+            let G003V4Container = document.getElementById("G003V4Gallery");
+            let G003V4Pictures = ["png", "04", "05", "01", "03", "06",
+                "07", "xenon", "fanblades", "light", "petals", "wave"];
+            for (let i = 1; i < G003V4Pictures.length; i++) {
+                let src = "./images/henon_strange_attractor/V4/" + G003V4Pictures[i] + "." + G003V4Pictures[0];
+                let img = new Image();
+                img.src = src;
+                G003V4Container.appendChild(img);
+            }
+        </script>
+    </section>
+</div>
+
+<p>The really interesting thing that occurred while adjusting the parameters for this program is the range of maps under different bounds. For example, the first image in this update is bounded to p:{-PI, PI}, x:{0, 2 PI}. However, images like the first two in the gallery share a very strong symmetry when unbounded. There's a somewhat obvious dividing line across the center and a less obvious one diagonally (this shows up quite early while iterating across the K constant; the maps are split along the diagonal and slowly connect as K increases). This underscores the importance of bounding conditions when looking for a solution, which gives me another insight into why my Henon maps aren't looking up to par.</p>
+
+<p>Below is a very tall image of the unbounded standard map (P is not modded by 2 PI and is no longer periodic). The diagonal symmetry axis is very evident at the top, and as you go down the image, you can see the very order structure eventually collapsing into noise and chaos.</p>
+
+<p><img src="./images/henon_strange_attractor/V4/02.png" alt="02" /></p>
+
+<h3>V5</h3>
+
+<h4>3/21/19</h4>
+
+<p>This update is less of an exploration of more chaos theory and more of a demonstration of a port of the previous update into C++ using OpenFrameworks. The expectation was to achieve higher speed and greater quality than P5JS, and the results were mixed to say the least.</p>
+
+<p><img src="./images/henon_strange_attractor/V5/standardMap1.png" alt="standardMap1" /></p>
+
+<p>Above is the one of the first satisfactory images produced from the C++ port. While there appears to be satisfactory quality in the image, the time needed to produce the image compared to that of the JS sketch was larger by order of magnitudes. In addition, the C++ version produced artefacts in the process that are particularly visible radially from the center eye. These distortions mar the quality of the image.</p>
+
+<p>However, an acceptable advantage of the C++ port is that it reduces a shimmering effect in the JS sketch that tends to visually hide features in the image. By allowing the program to layer hundreds of exposures in the image, high resolution features begin to stand out.</p>
+
+<p>With a little more tweaking (read: hours more), the program created this very nice picture after about 9 hours and 60 thousand exposures.</p>
+
+<p><img src="./images/henon_strange_attractor/V5/standardMap4.png" alt="standardMap4" /></p>
+
+<p>This program was massively sped up by using an array instead of
+a vector/array list. Some function calls, such as ofSetColor() were reduced by running each particle individually n times (I set n to be the lifetime of each particle) before moving to the next particle in the generation, and removing extraneous color change instructions.</p>
+
+<p>I also replaced the drawing buffer by drawing into an fbo (another renderer), and then drawing all the changes at once to the screen at the end of each generation. I also got rid of the artefacts by adding a random offset when drawing each particle. The image now looks much cleaner as a result (to this day, I'm still not sure why this works).</p>
+
+<p>An interesting thing to note is that the colors of each particle were decided based on each particle's initial conditions; a closer look into the minute details of the picture reveals cohesive and distinct groupings of color.</p>
+
+<p>With a sufficiently powerful machine, is it possible that even
+more detail is hidden within the noise?</p>
+
+<!--expander for galleries-->
+
+<script src="gallery-expander.js"></script>
+</article>
+</body>
+<footer>Updated on 08/12/19 by Matthew Yu.</footer>
+</html>
