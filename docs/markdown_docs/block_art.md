@@ -61,7 +61,7 @@ Here are some of the results that I've made!
 </div>
 
 <!--expander for galleries-->
-<script src="gallery-expander.js"></script>
+<script src="res/gallery-expander.js"></script>
 
 The parameter that adjusts how objects are sectioned and made is the variance. As the variance increases, less objects are formed since fewer pixels break through the variance threshold to become a new object. Vice versa, we see more detail in the image as the variance decreases. Similarly, the runtime of the algorithm and coloring functions are proportional to the variance. As more objects are created, the coloring function specifically has to look through more equivalent IDs before it can reach the base ID.
 

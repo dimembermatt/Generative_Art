@@ -40,4 +40,4 @@ Here are some other images I've made while experimenting with the color scheme a
 </div>
 
 <!--expander for galleries-->
-<script src="gallery-expander.js"></script>
+<script src="res/gallery-expander.js"></script>

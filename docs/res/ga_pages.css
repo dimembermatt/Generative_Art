@@ -1,0 +1,63 @@
+img {
+    padding: 1em;
+    margin:auto;
+    /* width:50%; */
+    display:block;
+}
+
+div {
+  border-radius: 10px;
+}
+
+button {
+    background-color: rgba(13, 27, 63, 0);
+    border: none;
+    color: white;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  /*background-color: #f1f1f1;*/
+}
+
+.flex-container > section, .panel {
+  background-color: rgba(13, 27, 63, .8);
+  color: white;
+  margin: 10px auto;
+  min-height: 50px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.flex-container > section > img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/** Specifically for GA pages**/
+.panel > img {
+    width:45%;
+    float:left;
+}
+section {
+  opacity: 1;
+  width:48%;
+}
+.accordion {
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  outline: none;
+  transition: 0.4s;
+}
+.panel {
+  min-height: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}

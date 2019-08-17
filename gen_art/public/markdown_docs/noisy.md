@@ -70,4 +70,4 @@ And the following is a gallery of images I've modified using this program.
 </div>
 
 <!--expander for galleries-->
-<script src="gallery-expander.js"></script>
+<script src="res/gallery-expander.js"></script>

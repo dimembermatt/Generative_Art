@@ -75,4 +75,4 @@ Here's a gallery of some of the Generative Art I've created with this program.
 </div>
 
 <!--expander for galleries-->
-<script src="gallery-expander.js"></script>
+<script src="res/gallery-expander.js"></script>

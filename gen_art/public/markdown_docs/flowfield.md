@@ -46,4 +46,4 @@ I created a particle class whose movement is based on the "force" of the vector 
 For the ones with the particles hidden, the field looks a lot like a heatmap, although the color is based on the direction and the time of the vector rather than its magnitude. I would like to create another program in the future that uses a sort of gravity as the force, and have the color be based on the magnitude of that gravity. For example, I could use a grayscale image as a base and the darker the pixel the stronger the gravity...
 
 <!--expander for galleries-->
-<script src="gallery-expander.js"></script>
+<script src="res/gallery-expander.js"></script>

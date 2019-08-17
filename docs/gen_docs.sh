@@ -33,8 +33,8 @@ for file in ${dir_list[@]}; do
 		<html>
 		<head>
 			<title>$title</title>
-			<link rel="stylesheet" href="github-markdown.css">
-			<link rel="stylesheet" href="ga_pages.css">
+			<link rel="stylesheet" href="res/github-markdown.css">
+			<link rel="stylesheet" href="res/ga_pages.css">
 			<style>
 				.markdown-body {
 					box-sizing: border-box;

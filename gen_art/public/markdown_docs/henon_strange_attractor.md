@@ -192,4 +192,4 @@ With a sufficiently powerful machine, is it possible that even
 more detail is hidden within the noise?
 
 <!--expander for galleries-->
-<script src="gallery-expander.js"></script>
+<script src="res/gallery-expander.js"></script>
