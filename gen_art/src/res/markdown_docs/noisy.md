@@ -19,11 +19,7 @@ indubitably a series of mental gymnastics to figure out (at the time). As a 4 de
 
 The following code appropriately sums up the Pixel access:
 
-<iframe
-  src="https://carbon.now.sh/embed/?bg=rgba(171%2C%20184%2C%20195%2C%201)&t=oceanic-next&wt=none&l=javascript&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=56px&ph=56px&ln=true&fm=Hack&fs=14px&lh=133%25&si=false&es=4x&wm=false&code=for%2520(int%2520i%2520%253D%25200%253B%2520i%2520%253C%2520canvas%253B%2520i%2520%252B%253D%25204)%257B%250A%2509if(i%2525(d*sectionSize)%2520%253D%253D%2520blockIdx)%2520%257B%250A%2509%2509%252F%252Fdo%2520something%253Cbr%253E%250A%2509%257D%250A%257D"
-  style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"
-  sandbox="allow-scripts allow-same-origin">
-</iframe>
+![Pixel Access.](./noisy/pixel_access.png)
 
 where *canvas* is the entire 1D array <code>[4 * width * density * height * density]</code> (density^2 is for high density displays, but is usually 1), and blockIdx is the index of the current section. The program doesn't access the inner loop unless a certain modded index is hit; changing this parameter adjusts to what extent that the new color is static for a block of pixels. Making the blockIdx volatile (in the current program, incrementable when the program goes into the inner loop) adds some variability to this process, which is good.
 
