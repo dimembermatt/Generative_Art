@@ -56,13 +56,13 @@ ul {
     padding: 0;
 }
 
-.details > .link {
+.details > a {
     visibility: hidden;
     position: absolute;
     left: 45%;
     top: 45%;
 }
 
-.details:hover > .link {
+.details:hover > a {
     visibility: visible;
 }
