@@ -1,0 +1,80 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" href="github-markdown.css">
+<link rel="stylesheet" href="ga_pages.css">
+<style>
+.markdown-body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 1100px;
+margin: 0 auto;
+padding: 45px;
+}
+
+@media (max-width: 767px) {
+.markdown-body {
+padding: 15px;
+}
+}
+</style>
+</head>
+<body>
+<article class="markdown-body">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+<h1>Flow Fields</h1>
+
+<h4>November 20th, 2018</h4>
+
+<p>Flow Field is one of the earliest sets of generative art programs that I've made, based off of Dan Schiffman's P5JS tutorial <a href="https://www.youtube.com/watch?v=vdgiqMkFygc&amp;list=PLRqwX-V7Uu6Z9hI4mSgx2FlE5w8zvjmEy&quot;">series</a>. At the time of making this, I was particularly intrigued by the use of particle systems to simulate movement and forces; I wanted to use Perlin Noise to create a field of "movement", enabling particles inside of this field to follow naturally determined paths.</p>
+
+<p><img src="./images/flowfield/Flowfield1.png" alt="Flowfield." /></p>
+
+<p>I generated the map of Perlin noise by setting a vector at each x,y coordinate of the canvas; the angle of the vector is of the function</p>
+
+<script type="math/tex">angle = noise(xOff, yOff, zOff) * 2\pi * 5</script>
+
+<p>The perlin noise function is similar to the random function except that the perlin noise function is <em>differentiable</em>, which means that between any two points, say</p>
+
+<script type="math/tex">f(t) \quad and \quad f(t + \vec{\Delta} t)</script>
+
+<p>There will be a set of points between the two times such that the function will always be continuous (no breaks), and will never have a an infinite vertical slope (no jumping between values). Below is an example of a differentiable function.</p>
+
+<p><img src="./images/flowfield/differentiable.png" alt="differentiable" /></p>
+
+<p>This effect is displayed in our noise function by the direction and color of our vectors of the flowfield; each one is slightly offset to each other relative to their position and to time. None of them will immediately change direction.</p>
+
+<p>This means that a particle in the field will experience gradual changes in its force, allowing it move much like an object in a current of water.</p>
+
+<p>I created a particle class whose movement is based on the "force" of the vector in which the particle exists at (think in units of cells, [0, 0], etc) and added some color. Here are the results!</p>
+
+<!--flowfield gallery-->
+
+<div class="flex-container">
+    <section>
+        <button class="accordion"><h2>FlowField</h2></button>
+        <div id="FlowFieldGallery" class="panel"></div>
+        <script>
+            let FlowFieldContainer = document.getElementById("FlowFieldGallery");
+            let FlowFieldPictures = ["png", "flowfield1", "flowfield2", "flowfield3", "flowfield4", "flowfield5", "flowfield6", "heatmap", "rainbowrain", "wormtunnels"];
+            for (let i = 1; i < FlowFieldPictures.length; i++) {
+                let src = "./images/flowfield/" + FlowFieldPictures[i] + "." + FlowFieldPictures[0];
+                let img = new Image();
+                img.src = src;
+                FlowFieldContainer.appendChild(img);
+            }
+        </script>
+    </section>
+</div>
+
+<p>For the ones with the particles hidden, the field looks a lot like a heatmap, although the color is based on the direction and the time of the vector rather than its magnitude. I would like to create another program in the future that uses a sort of gravity as the force, and have the color be based on the magnitude of that gravity. For example, I could use a grayscale image as a base and the darker the pixel the stronger the gravity...</p>
+
+<!--expander for galleries-->
+
+<script src="gallery-expander.js"></script>
+</article>
+</body>
+<footer>Updated on 08/16/19 by Matthew Yu.</footer>
+</html>
