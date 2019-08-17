@@ -10,6 +10,7 @@
 
 # production
 /build
+/gen_art/node_modules
 
 # misc
 .DS_Store

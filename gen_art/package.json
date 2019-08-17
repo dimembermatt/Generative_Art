@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm run build:markdown && react-scripts build && cd ../docs/ && ./clean.sh && cd ../gen_art/ && mv build/* ../docs/ && rm build -r",
+    "build": "npm i && npm run build:markdown && react-scripts build && rm -rf node_modules/ && cd ../docs/ && ./clean.sh && cd ../gen_art/ && mv build/* ../docs/ && rm build -r",
     "build:markdown": "cd public/ && ./gen_docs.sh markdown_docs",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
