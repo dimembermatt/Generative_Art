@@ -1,3 +1,9 @@
+## Setup
+1. Checkout the branch: `git checkout dev`
+2. Remove any package locks: `find ./ -name 'package-lock.json' -type f -delete`
+3. Reinstall any dependencies: `npm i`
+4. Run the program using the provided scripts below.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
