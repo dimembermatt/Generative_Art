@@ -1,5 +1,6 @@
 {
   "name": "gen_art",
+  "homepage": "http://dimembermatt.github.io/Generative_Art",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
