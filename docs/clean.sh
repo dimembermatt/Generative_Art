@@ -1,5 +1,5 @@
-rm *.html
-rm *js
-rm *.json
-rm gen_docs.sh
-rm -r images/ res/ static/
+rm -f *.html
+rm -f *js
+rm -f *.json
+rm -f gen_docs.sh
+rm -rf images/ res/ static/ markdown_docs/

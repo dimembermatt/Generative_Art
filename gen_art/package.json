@@ -1,0 +1,40 @@
+{
+  "name": "gen_art",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "github-markdown-css": "^3.0.1",
+    "markdown-loader": "^5.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-markdown": "^4.1.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "npm run build:markdown && react-scripts build && cd ../docs/ && ./clean.sh && cd ../gen_art/ && mv build/* ../docs/ && rm build -r",
+    "build:markdown": "cd public/ && ./gen_docs.sh markdown_docs",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "env": "NODE_ENV=test"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0"
+  }
+}
