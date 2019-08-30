@@ -54,7 +54,7 @@ class Section extends React.Component {
         // populate an array of images with the correct path substring
         var that = this;
         props.imageMeta.forEach(function(file) {
-            console.log(file);
+            // console.log(file);
             if(props.expandable === "true")
                 that.state.images.push([getURI("./" + props.sectionID +  "/" + file[0]), file[1], file[2]]);
         });

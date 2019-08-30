@@ -4,14 +4,15 @@ import PhotoGallery from "react-photo-gallery";
 /**
  * class Gallery displays a given list of photos.
  * @extends React
- * @props images - array of imageURIs to display
+ * @props images - array of image metadata to display
  */
 class Gallery extends React.Component {
     constructor(props) {
-        console.log("Images: ", props.images);
+        // console.log("Images: ", props.images);
         super(props);
         this.state = {
-            photos: []
+            photos: [],
+            display: false
         }
 
         // format to React Photo Gallery requirements
@@ -23,6 +24,20 @@ class Gallery extends React.Component {
                 height: image[2]
             });
         });
+
+        // bind onClick to React Component
+        this.onClick = this.onClick.bind(this);
+    }
+
+    /**
+     * onClick expands/collapses the gallery based on display state
+     */
+    onClick() {
+        // console.log(this.state.display);
+        if(this.state.display === false)
+            this.setState({display: true});
+        else
+            this.setState({display: false});
     }
 
     render() {
@@ -31,8 +46,16 @@ class Gallery extends React.Component {
         };
         return (
             <div>
-                <h2 style={headerStyle}>Gallery</h2>
-                <PhotoGallery photos={this.state.photos} direction={"column"}/>
+                <button onClick={this.onClick}>
+                    <h2 style={headerStyle}>Gallery</h2>
+                </button>
+                {
+                    this.state.display ?
+                    <PhotoGallery
+                        photos={this.state.photos}
+                        direction={"column"}
+                    /> : null
+                }
             </div>
         );
     }
