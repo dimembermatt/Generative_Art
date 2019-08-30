@@ -1,0 +1,135 @@
+[{
+    "title": "Introduction",
+    "thumbnailURL": "",
+    "sectionID": "introduction",
+    "expandable": "false",
+    "images": []
+},
+{
+    "title": "Layered Nodes",
+    "thumbnailURL": "Layered_Nodes_2.PNG",
+    "sectionID": "layered_nodes",
+    "expandable": "true",
+    "images": [
+        ["aligningMirors.png",      1, 1],
+        ["circleStructure.png",     1, 1],
+        ["eyeball.png",             1, 1],
+        ["mechanicalSun.png",       1, 1],
+        ["rotatingDrums.png",       1, 1]
+    ]
+},
+{
+    "title": "Grids",
+    "thumbnailURL": "Grid_3.png",
+    "sectionID": "grids",
+    "expandable": "true",
+    "images": [
+        ["abstract1.png",           1, 1],
+        ["abstract2.png",           1, 1],
+        ["abstract3.png",           1, 1],
+        ["abstract4.png",           1, 1],
+        ["abstract5.png",           1, 1],
+        ["abstract6.png",           1, 1],
+        ["abstract7.png",           1, 1],
+        ["babyDinosaur.png",        1, 1]
+    ]
+},
+{
+    "title": "Henon Strange Attractor",
+    "thumbnailURL": "jellyfish.png",
+    "sectionID": "henon_strange_attractor",
+    "expandable": "true",
+    "images": [
+        ["V1/beams.png",                1, 1],
+        ["V1/cylindricalSections.png",  1, 1],
+        ["V1/diffraction.png",          1, 1],
+        ["V1/diffraction2.png",         1, 1],
+        ["V1/pixelSun.png",             1, 1],
+        ["V1/vortex.png",               1, 1],
+        ["V2/brightman.png",            1, 1],
+        ["V2/claws.png",                1, 1],
+        ["V2/jellyfish.png",            1, 1],
+        ["V2/nikeLogo.png",             1, 1],
+        ["V2/outline.png",              1, 1],
+        ["V2/strangeObject.png",        1, 1],
+        ["V2/strangeObject2.png",       1, 1],
+        ["V4/01.png",                   1, 1],
+        ["V4/03.png",                   1, 1],
+        ["V4/04.png",                   1, 1],
+        ["V4/05.png",                   1, 1],
+        ["V4/06.png",                   1, 1],
+        ["V4/07.png",                   1, 1],
+        ["V4/chirikov_standard_map_2.png",1, 1],
+        ["V4/fanblades.png",            1, 1],
+        ["V4/light.png",                1, 1],
+        ["V4/petals.png",               1, 1],
+        ["V4/wave.png",                 1, 1],
+        ["V4/xenon.png",                1, 1]
+    ]
+},
+{
+    "title": "Block Art",
+    "thumbnailURL": "caveOpening.png",
+    "sectionID": "block_art",
+    "expandable": "true",
+    "images": [
+        ["arjunFace.png",           1, 1],
+        ["caveOpening.png",         1, 1],
+        ["concorde.png",            2, 3],
+        ["glasses.png",             2, 3],
+        ["pixelSchool.png",         2, 1],
+        ["pixelSchool2.png",        2, 1],
+        ["pixelTurtle.png",         2, 1],
+        ["pixelTurtle2.png",        2, 1],
+        ["talonflame.png",          1, 1],
+        ["talonflame2.png",         1, 1]
+    ]
+},
+{
+    "title": "Belousov Zharbotinsky Reactions",
+    "thumbnailURL": "Beluusov-Zhabotinsky_Reaction.png",
+    "sectionID": "belousov_zharbotinsky",
+    "expandable": "true",
+    "images": [
+        ["blue_and_red.png",        1, 1],
+        ["amnioticFluid.png",       1, 1]
+    ]
+},
+{
+    "title": "Flow Fields",
+    "thumbnailURL": "heatmap.png",
+    "sectionID": "flowfield",
+    "expandable": "true",
+    "images": [
+        ["flowfield1.png",          2, 1],
+        ["flowfield2.png",          2, 1],
+        ["flowfield3.png",          2, 1],
+        ["flowfield4.png",          2, 1],
+        ["flowfield5.png",          2, 1],
+        ["flowfield6.png",          2, 1],
+        ["heatmap.png",             2, 1],
+        ["rainbowrain.png",         2, 1],
+        ["wormtunnels.png",         2, 1]
+    ]
+},
+{
+    "title": "Noisy",
+    "thumbnailURL": "moon2.png",
+    "sectionID": "noisy",
+    "expandable": "true",
+    "images": [
+        ["coastline.png",           2, 1],
+        ["moon.png",                3, 2],
+        ["moon2.png",               3, 2],
+        ["nebula.png",              3, 2],
+        ["nebula2.png",             3, 2],
+        ["nebula3.png",             3, 2],
+        ["nebula4.png",             3, 2],
+        ["nebula5.png",             3, 2],
+        ["spaceMountain.png",       1, 1],
+        ["planets_s.png",           1, 3],
+        ["planets_s2.png",          1, 3],
+        ["wunderscape1.png",        2, 1],
+        ["wunderscape2.png",        2, 1]
+    ]
+}]

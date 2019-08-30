@@ -1,0 +1,78 @@
+ul {
+    padding: 0;
+}
+
+.section {
+    background-color: white;
+    margin: 0 5vw;
+    height: 30vh;
+    width: 90vw;
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 10px;
+}
+
+/* preferably, the thumbnail size is of 1x1 dimension
+if it is not, crop and center it to get the best result */
+img {
+    /* background-color: yellow; */
+    grid-column: 2 / span 4;
+    grid-row: 2 / span 4;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    max-width:100%;
+    max-height:100%;
+    align-self: center;    /* vertical centering*/
+}
+
+.details {
+    /* background-color: green; */
+    grid-column: 7 / span 11;
+    grid-row: 2 / span 4;
+    position:relative;
+}
+
+@media (max-width: 767px) {
+    .markdown-body {
+        margin: 1%;
+    }
+}
+
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    padding: 0 1%;
+}
+
+.summary {
+    height:100%;
+
+    white-space: pre-wrap;
+    overflow: hidden;
+}
+
+.summary:hover {
+    background-color: rgba(50, 50, 50, .6);
+    opacity: .2;
+    border-radius: 5px;
+}
+
+.details > div > button {
+    visibility: hidden;
+    position: absolute;
+    left: 45%;
+    top: 45%;
+}
+
+.details:hover > div > button{
+    visibility: visible;
+}
+
+button:hover {
+    visibility: visible;
+}
+
+.full {
+    overflow-y: auto;
+    height: 100%;
+}
