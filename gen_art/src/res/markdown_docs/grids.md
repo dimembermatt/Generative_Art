@@ -30,23 +30,3 @@ I allowed the lines between the nodes to continue to exist at every frame, but r
 ![Grid 4.](./grids/Grid_4.png)
 
 Here's a gallery of some of the Generative Art I've created with this program.
-
-<div class="flex-container">
-    <section>
-        <button class="accordion"><h2>G002</h2></button>
-        <div id="G002Gallery" class="panel"></div>
-        <script>
-            let G002Container = document.getElementById("G002Gallery");
-            let G002Pictures = ["png", "abstract1", "abstract3", "abstract4",
-                "abstract5", "abstract6", "abstract7", "babyDinosaur", "abstract2"];
-            for (let i = 1; i < G002Pictures.length; i++) {
-                let src = "./grids/" + G002Pictures[i] + "." + G002Pictures[0];
-                let img = new Image();
-                img.src = src;
-                G002Container.appendChild(img);
-            }
-        </script>
-    </section>
-</div>
-
-<script src="res/gallery-expander.js"></script>

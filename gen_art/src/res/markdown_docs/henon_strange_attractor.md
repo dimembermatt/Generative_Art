@@ -29,25 +29,7 @@ Colorful, but not very interesting. After tinkering with alpha values a bit more
 
 ![dispersion](./henon_strange_attractor/V1/dispersion.png)
 
-An interesting artefact of my process, by randomizing the color of each pixel and rotating/shifting the general position of the shape every couple rounds, is the separation of particles into discrete sections sorted by color. The color sections don't seem to have any pattern in which they are sorted, which makes the phenomenon even more intriguing. The V1 gallery is below.
-
-<div class="flex-container">
-    <section>
-        <button class="accordion"><h2>G003 V1</h2></button>
-        <div id="G003V1Gallery" class="panel"></div>
-        <script>
-            let G003V1Container = document.getElementById("G003V1Gallery");
-            let G003V1Pictures = ["png", "beams", "colorBurst", "cylindricalSections",
-                "diffraction", "diffraction2", "dispersion", "pixelSun", "ridges", "vortex"];
-            for (let i = 1; i < G003V1Pictures.length; i++) {
-                let src = "./henon_strange_attractor/V1/" + G003V1Pictures[i] + "." + G003V1Pictures[0];
-                let img = new Image();
-                img.src = src;
-                G003V1Container.appendChild(img);
-          }
-        </script>
-    </section>
-</div>
+An interesting artefact of my process, by randomizing the color of each pixel and rotating/shifting the general position of the shape every couple rounds, is the separation of particles into discrete sections sorted by color. The color sections don't seem to have any pattern in which they are sorted, which makes the phenomenon even more intriguing.
 
 ### Version 2
 #### 8/7/18
@@ -70,65 +52,22 @@ And tada! We're getting a pattern here! If we zoom out and let the program simme
 
 The initial values are a(.2) and b(1.01). After experimenting with it, here are the visual differences when a and b are altered to the below values.
 
-<div class="flex-container">
-    <section>
-        <button class="accordion"><h2>Testing a and b</h2></button>
-        <div id="G003V2Experiments" class="panel"></div>
-        <script>
-            let G003V2Experiments = document.getElementById("G003V2Experiments");
-            let G003V2ExpPictures = ["png", "a_2b_93", "a_2b_97", "a_2b1_01", "a_4b1_01",
-                "a_17b1_01", "a2b1_1"];
-            for (let i = 1; i < G003V2ExpPictures.length; i++) {
-                let src = "./henon_strange_attractor/" + G003V2ExpPictures[i] + "." + G003V2ExpPictures[0];
-                let img = new Image();
-                img.src = src;
-                G003V2Experiments.appendChild(img);
-            }
-        </script>
-    </section>
-</div>
+![a_2b_93](./henon_strange_attractor/a_2b_93.png)
+![a_2b_97](./henon_strange_attractor/a_2b_97.png)
+![a_2b1_01](./henon_strange_attractor/a_2b1_01.png)
+![a_2b1_1](./henon_strange_attractor/a_2b1_1.png)
+![a_17b1_01](./henon_strange_attractor/a_17b1_01.png)
+![a_4b1_01](./henon_strange_attractor/a_4b1_01.png)
 
-After experimenting a lot more with those values, here are some of the more interesting results that I came up with:
-
-<div class="flex-container">
-    <section>
-        <button class="accordion"><h2>G003 V2</h2></button>
-        <div id="G003V2Gallery" class="panel"></div>
-        <script>
-            let G003V2Container = document.getElementById("G003V2Gallery");
-            let G003V2Pictures = ["png", "bouquet", "claws", "jellyfish", "outline",
-                "nikeLogo", "strangeObject", "strangeObject2", "brightman"];
-            for (let i = 1; i < G003V2Pictures.length; i++) {
-                let src = "./henon_strange_attractor/V2/" + G003V2Pictures[i] + "." + G003V2Pictures[0];
-                let img = new Image();
-                img.src = src;
-                G003V2Container.appendChild(img);
-            }
-        </script>
-    </section>
-</div>
+After experimenting a lot more with those values, I came up with some more interesting results. They are in the gallery at the bottom.
 
 ### Version 3
 #### 10/29/18
 
 I went back and tried the same equations with V1 again, using the lessons I've learned from V2 to better bound the object and get it to display, but unfortunately this was the best result I could get.
 
-<div class="flex-container">
-    <section>
-        <button class="accordion"><h2>G003 V3</h2></button>
-        <div id="G003V3Gallery" class="panel"></div>
-        <script>
-            let G003V3Container = document.getElementById("G003V3Gallery");
-            let G003V3Pictures = ["png", "001", "flowerPetal"];
-            for (let i = 1; i < G003V3Pictures.length; i++) {
-                let src = "./henon_strange_attractor/V3/" + G003V3Pictures[i] + "." + G003V3Pictures[0];
-                let img = new Image();
-                img.src = src;
-                G003V3Container.appendChild(img);
-            }
-        </script>
-    </section>
-</div>
+![001](./henon_strange_attractor/V3/001.png)
+![flowerPetal](./henon_strange_attractor/V3/flowerPetal.png)
 
 It's a little more interesting, and definitely more in line with what I expected V1 to be, but definitely not what Tarbell or Bourke have created. A couple sources of error might be the scale that I'm on. It's possible that (judging from Bourke's source code for *Henon Phase Deep*) I may be a scale of 10^2 off from the size of the world that these particles move in.
 
@@ -141,24 +80,6 @@ This update plays with the Standard map, or the Chirikov standard map. I was loo
 
 The full gallery for these images are below, and runnable JS example
 can be found [here](./res/G003/page/G003_V4.html).
-
-<div class="flex-container">
-    <section>
-        <button class="accordion"><h2>G003 V4</h2></button>
-        <div id="G003V4Gallery" class="panel"></div>
-        <script>
-            let G003V4Container = document.getElementById("G003V4Gallery");
-            let G003V4Pictures = ["png", "04", "05", "01", "03", "06",
-                "07", "xenon", "fanblades", "light", "petals", "wave"];
-            for (let i = 1; i < G003V4Pictures.length; i++) {
-                let src = "./henon_strange_attractor/V4/" + G003V4Pictures[i] + "." + G003V4Pictures[0];
-                let img = new Image();
-                img.src = src;
-                G003V4Container.appendChild(img);
-            }
-        </script>
-    </section>
-</div>
 
 The really interesting thing that occurred while adjusting the parameters for this program is the range of maps under different bounds. For example, the first image in this update is bounded to p:{-PI, PI}, x:{0, 2 PI}. However, images like the first two in the gallery share a very strong symmetry when unbounded. There's a somewhat obvious dividing line across the center and a less obvious one diagonally (this shows up quite early while iterating across the K constant; the maps are split along the diagonal and slowly connect as K increases). This underscores the importance of bounding conditions when looking for a solution, which gives me another insight into why my Henon maps aren't looking up to par.
 
@@ -190,5 +111,3 @@ An interesting thing to note is that the colors of each particle were decided ba
 
 With a sufficiently powerful machine, is it possible that even
 more detail is hidden within the noise?
-
-<script src="res/gallery-expander.js"></script>

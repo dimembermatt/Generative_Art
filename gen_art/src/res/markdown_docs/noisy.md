@@ -42,26 +42,3 @@ Here's the Codepen with an example image (that you can replace) set up. Click on
 
 <p data-height="686" data-theme-id="0" data-slug-hash="GBGvJR" data-default-tab="result" data-user="dimembermatt" data-pen-title="noisy" class="codepen">See the Pen <a href="https://codepen.io/dimembermatt/pen/GBGvJR/">noisy</a> by Matthew Yu (<a href="https://codepen.io/dimembermatt">@dimembermatt</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-
-And the following is a gallery of images I've modified using this program.
-
-<div class="flex-container">
-    <section>
-        <button class="accordion"><h2>Noisy</h2></button>
-        <div id="NoisyGallery" class="panel"></div>
-        <script>
-            let NoisyContainer = document.getElementById("NoisyGallery");
-            //zero index contains extension
-            //everything else is picture name
-            let NoisyPictures = ["png", "planets_s", "planets_s2", "coastline", "moon", "moon2", "spaceMountain", "nebula2", "nebula3", "wunderscape1", "wunderscape2"];
-            for (let i = 1; i < NoisyPictures.length; i++) {
-                let src = "./noisy/" + NoisyPictures[i] + "." + NoisyPictures[0];
-                let img = new Image();
-                img.src = src;
-                NoisyContainer.appendChild(img);
-            }
-        </script>
-    </section>
-</div>
-
-<script src="res/gallery-expander.js"></script>

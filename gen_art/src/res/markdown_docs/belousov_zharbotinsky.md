@@ -13,26 +13,6 @@ What is particularly interesting about Turner's code is that he has a depth of t
 
 ![p and q](./belousov_zharbotinsky/p_and_q.png)
 
-
 It seemed confusing at first: why would you change the pixel value right after you've modified it from the pixel calculation? What the program is *actually* doing is switching the index that the calculations are asking. And it's doing so for each pixel, which means the first pixel could be running on p values and the next one running on q values. It's a bit beyond me to grasp the full implications of how this works, but it does work, and it makes a pretty cool sight.
 
 Here are some other images I've made while experimenting with the color scheme and modifying some values here and there to get this to work.
-
-<div class="flex-container">
-    <section>
-      <button class="accordion"><h2>G007</h2></button>
-      <div id="G007" class="panel"></div>
-      <script>
-        let G007Container = document.getElementById("G007");
-        let G007Pictures = ["png", "amnioticFluid", "blue_and_red"];
-        for (let i = 1; i < G007Pictures.length; i++) {
-            let src = "./belousov_zharbotinsky/" + G007Pictures[i] + "." + G007Pictures[0];
-            let img = new Image();
-            img.src = src;
-            G007Container.appendChild(img);
-        }
-      </script>
-    </section>
-</div>
-
-<script src="res/gallery-expander.js"></script>

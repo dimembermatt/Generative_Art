@@ -55,22 +55,3 @@ was pushed to a set called a *nodeLayer*, and each nodeLayer was pushed into an 
 Creating these node sets enabled me to draw shapes based on their vertices and color them in, as well as make them spin, using p5's rotate() function.
 
 Here's a gallery of some of the Generative Art I've created with this program.
-
-<div class="flex-container">
-    <section>
-        <button class="accordion"><h2>G001</h2></button>
-        <div id="G001Gallery" class="panel"></div>
-        <script>
-            let G001Container = document.getElementById("G001Gallery");
-            let G001Pictures = ["png", "aligningMirors", "circleStructure", "eyeball", "mechanicalSun", "rotatingDrums"];
-            for (let i = 1; i < G001Pictures.length; i++) {
-                let src = "./layered_nodes/" + G001Pictures[i] + "." + G001Pictures[0];
-                let img = new Image();
-                img.src = src;
-                G001Container.appendChild(img);
-            }
-        </script>
-    </section>
-</div>
-
-<script src="res/gallery-expander.js"></script>

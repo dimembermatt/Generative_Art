@@ -1,65 +1,78 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import SkyLight from 'react-skylight';
+import Gallery from './Gallery';
 
 // CSS files
 import '../css/Section.css';
-import '../res/github-markdown.css';
+import '../css/github-markdown.css';
 
 // get location of images folder in webpack
-var imageContext;
+var imageContext    = require.context('../images', true);;
 // also get location of the markdown text files to use
-var markdownContext;
+var markdownContext = require.context('../res/markdown_docs/', false, /\.md$/);;
 
-imageContext    = require.context('../images', true);
-markdownContext = require.context('../res/markdown_docs/', false, /\.md$/);// grab uri of each markdown file in here
+// URI for image assets transformation in the markdown
+const getURI = function(input){
+    return imageContext(input);
+};
 
-
-const markdownFiles = markdownContext
-    .keys()
-    .map((filename) => markdownContext(filename));
-console.log(markdownFiles);
-
-// -------------------------------------------------------------
-
-//  -----------------------------------------------------------
+/**
+ * class Section creates an instance of a Generative Art Entry, containing a thumbnail, a summary description, and an expandable frame containing the entry content pulled from a markdown file.
+ * @props
+ *      key             - unique key for each component
+ *      name            - official name for the Generative Art Entry
+ *      thumbnailURL    - URL for section thumbnail
+ *      imageMeta       - image URLs for gallery display, if any
+ *      SectionID       - id used to grab markdown, image files
+ *      expandable      - boolean whether there is expandable content to render
+ * @extends React
+ */
 class Section extends React.Component {
     constructor(props) {
-        console.log("Section " + props.name);
+        // console.log("Section " + props.name);
+
         // props are still accessible through super constructor
         super(props);
         // default set state for derived variables
         this.state = {
             fileURL: '',
+            images: [],
             thumbnailURL: '',
             text: ''
-        }
+        };
 
         // generate thumbnail
         if(props.thumbnailURL !== '')
-            this.state.thumbnailURL = imageContext('./thumbnails/' + props.thumbnailURL);
+            this.state.thumbnailURL = getURI("./thumbnails/" + props.thumbnailURL);
         else
-            this.state.thumbnailURL = imageContext('./thumbnails/moon2.png');
+            this.state.thumbnailURL = getURI("./thumbnails/moon2.png");
 
-        // generate section text blurb
-        // first, find the url of the matching section
+        // grab file URL of the markdown file specified by the sectionID
+        this.state.fileURL = markdownContext("./" + props.sectionID + ".md");
+
+        // populate an array of images with the correct path substring
         var that = this;
-        markdownFiles.forEach(function(file) {
-            if(file.includes(props.sectionID))
-                that.state.fileURL = file;
+        props.imageMeta.forEach(function(file) {
+            console.log(file);
+            if(props.expandable === "true")
+                that.state.images.push([getURI("./" + props.sectionID +  "/" + file[0]), file[1], file[2]]);
         });
+
+        // console.log("SectionID: ", props.sectionID);
+        // console.log("FileURL: ", this.state.fileURL);
+        // console.log("ImageMeta: ", this.state.images);
     }
 
     // reactjs.org says that this function is a good place to load remote data, say from your github server
-    componentDidMount(){
-        // load that file
-        console.log(this.state.fileURL);
+    componentDidMount() {
+        // load the text from the markdown file
         fetch(this.state.fileURL)
             .then(result => result.text())
             .then(result => this.setState({text: result}));
     }
 
-    render(){
+    render() {
         // style
         var dialogStyle = {
             backgroundColor: 'rgb(245, 245, 245)',
@@ -74,10 +87,27 @@ class Section extends React.Component {
                 color: 'black'
             }
         };
-        // URI for image assets transformation in the markdown
-        const getURI = function(input){
-            return imageContext(input);
-        };
+
+        let expandable;
+        if(this.props.expandable === "true"){
+            expandable =
+                <div>
+                    <button onClick={() => this.untitled.show()}>Read more...</button>
+                    <SkyLight dialogStyles={dialogStyle} hideOnOverlayClicked ref={ref => this.untitled = ref}>
+                        <div className="full">
+                            <ReactMarkdown className="markdown-body"
+                                source={this.state.text}
+                                escapeHtml={false}
+                                transformImageUri={getURI}
+                            />
+                            <br/>
+                            <Gallery
+                                images={this.state.images}
+                            />
+                        </div>
+                    </SkyLight>
+                </div>;
+        }
 
         return (
             <div className="section">
@@ -90,14 +120,7 @@ class Section extends React.Component {
                         disallowedTypes={['image', 'imageReference']}
                         unwrapDisallowed={true}
                     />
-                    <button onClick={() => this.untitled.show()}>Read more...</button>
-                    <SkyLight dialogStyles={dialogStyle} hideOnOverlayClicked ref={ref => this.untitled = ref}>
-                        <ReactMarkdown className="markdown-body full"
-                            source={this.state.text}
-                            escapeHtml={false}
-                            transformImageUri={getURI}
-                        />
-                    </SkyLight>
+                    {expandable}
                 </div>
             </div>
         );

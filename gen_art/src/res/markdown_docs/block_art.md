@@ -13,7 +13,6 @@ The specific algorithm written for this program is as follows:
 
 ![Connect Component Algorithm.](./block_art/connected_component_algorithm.png)
 
-
 This part of the program, encapsulated into a **connected components** function, is followed by a postprocessing image coloring function. This **coloring** function updates the image (through P5.js's Pixel array) by taking the first pixel's color of an object and setting that as the color for every pixel part of that object. This essentially flattens the gradient across the image.
 
 ![Color Flattening Algorithm.](./block_art/flatten_algorithm.png)
@@ -31,28 +30,6 @@ But if there is two matching neighbors, the lower ID of the two becomes the equi
 This is important because instead of merging the two similar objects at the time they are found (which isn't very efficient but easier to code) we want to be able to do a final pass after building the equivalency list. Making the higher ID be the ID of the pixel means all related pixels of the higher ID will be congruent to the lower ID when looking through searchRef.
 
 For the table above, this means that 5 = 4 = 2, with 2 being the base ID. Three objects are being merged here! The final color for all pixels of the IDs 5, 4, and 2 will be white.
-
-Here are some of the results that I've made!
-
-<div class="flex-container">
-    <section>
-        <button class="accordion"><h2>G005</h2></button>
-        <div id="G005" class="panel"></div>
-        <script>
-            let G005Container = document.getElementById("G005");
-            let G005Pictures = ["png", "pixelSchool", "pixelSchool2", "pixelTurtle",
-                "pixelTurtle2", "talonflame", "talonflame2", "concorde", "arjunFace"];
-            for (let i = 1; i < G005Pictures.length; i++) {
-                let src = "images/block_art/" + G005Pictures[i] + "." + G005Pictures[0];
-                let img = new Image();
-                img.src = src;
-                G005Container.appendChild(img);
-            }
-        </script>
-    </section>
-</div>
-
-<script src="res/gallery-expander.js"></script>
 
 The parameter that adjusts how objects are sectioned and made is the variance. As the variance increases, less objects are formed since fewer pixels break through the variance threshold to become a new object. Vice versa, we see more detail in the image as the variance decreases. Similarly, the runtime of the algorithm and coloring functions are proportional to the variance. As more objects are created, the coloring function specifically has to look through more equivalent IDs before it can reach the base ID.
 
