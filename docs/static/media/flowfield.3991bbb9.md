@@ -23,25 +23,6 @@ This effect is displayed in our noise function by the direction and color of our
 
 This means that a particle in the field will experience gradual changes in its force, allowing it move much like an object in a current of water.
 
-I created a particle class whose movement is based on the "force" of the vector in which the particle exists at (think in units of cells, [0, 0], etc) and added some color. Here are the results!
-
-<div class="flex-container">
-    <section>
-        <button class="accordion"><h2>FlowField</h2></button>
-        <div id="FlowFieldGallery" class="panel"></div>
-        <script>
-            let FlowFieldContainer = document.getElementById("FlowFieldGallery");
-            let FlowFieldPictures = ["png", "flowfield1", "flowfield2", "flowfield3", "flowfield4", "flowfield5", "flowfield6", "heatmap", "rainbowrain", "wormtunnels"];
-            for (let i = 1; i < FlowFieldPictures.length; i++) {
-                let src = "./flowfield/" + FlowFieldPictures[i] + "." + FlowFieldPictures[0];
-                let img = new Image();
-                img.src = src;
-                FlowFieldContainer.appendChild(img);
-            }
-        </script>
-    </section>
-</div>
+I created a particle class whose movement is based on the "force" of the vector in which the particle exists at (think in units of cells, [0, 0], etc) and added some color.
 
 For the ones with the particles hidden, the field looks a lot like a heatmap, although the color is based on the direction and the time of the vector rather than its magnitude. I would like to create another program in the future that uses a sort of gravity as the force, and have the color be based on the magnitude of that gravity. For example, I could use a grayscale image as a base and the darker the pixel the stronger the gravity...
-
-<script src="res/gallery-expander.js"></script>

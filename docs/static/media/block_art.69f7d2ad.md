@@ -11,19 +11,11 @@ The program works by sectioning an image by the color gradient across each pixel
 
 The specific algorithm written for this program is as follows:
 
-<iframe
-  src="https://carbon.now.sh/embed/?bg=rgba(249%2C249%2C249%2C0)&t=material&wt=none&l=python&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=56px&ph=56px&ln=true&fm=Fira%20Code&fs=18px&lh=164%25&si=false&es=4x&wm=false&code=for%2520a%2520pixel%2520in%2520the%2520image%2520(we%2520go%2520iteratively%252C%2520from%2520row%2520to%2520row)%253A%250A%2520%2520%2509check%2520the%2520top%2520and%2520left%2520adjacent%2520pixel%250A%2520%2520%2520%2520%2509if%2520variance%2520(of%2520neighbor%2520color)%2520%253E%2520threshold%253A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2509if%2520left%2520neighbor%2520only%2520passes%253A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2509set%2520pixel%2520id%2520as%2520left%2520pixel%2520id%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520if%2520top%2520neighbor%2520only%2520passes%253A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2509%2509set%2520pixel%2520id%2520as%2520top%2520pixel%2520id%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520if%2520both%2520neighbors%2520pass%253A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2509add%2520both%2520ids%2520to%2520an%2520equivalency%2520list%252Fcorrelation%2520map%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2509set%2520pixel%2520id%2520as%2520either%2520id%250A%2509%2509else%253A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2509start%2520a%2520new%2520object%2520id"
-  style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"
-  sandbox="allow-scripts allow-same-origin">
-</iframe>
+![Connect Component Algorithm.](./block_art/connected_component_algorithm.png)
 
 This part of the program, encapsulated into a **connected components** function, is followed by a postprocessing image coloring function. This **coloring** function updates the image (through P5.js's Pixel array) by taking the first pixel's color of an object and setting that as the color for every pixel part of that object. This essentially flattens the gradient across the image.
 
-<iframe
-  src="https://carbon.now.sh/embed/?bg=rgba(249%2C249%2C249%2C0)&t=material&wt=none&l=python&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=56px&ph=56px&ln=true&fm=Fira%20Code&fs=18px&lh=164%25&si=false&es=4x&wm=false&code=for%2520pixel%2520in%2520the%2520image%253A%250A%2509get%2520the%2520pixel%2520id%250A%2509search%2520the%2520correlation%2520map%2520for%2520the%2520associated%2520base%2520id%2520and%2520color"
-  style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"
-  sandbox="allow-scripts allow-same-origin">
-</iframe>
+![Color Flattening Algorithm.](./block_art/flatten_algorithm.png)
 
 This is a pretty short function, right?
 
@@ -38,28 +30,6 @@ But if there is two matching neighbors, the lower ID of the two becomes the equi
 This is important because instead of merging the two similar objects at the time they are found (which isn't very efficient but easier to code) we want to be able to do a final pass after building the equivalency list. Making the higher ID be the ID of the pixel means all related pixels of the higher ID will be congruent to the lower ID when looking through searchRef.
 
 For the table above, this means that 5 = 4 = 2, with 2 being the base ID. Three objects are being merged here! The final color for all pixels of the IDs 5, 4, and 2 will be white.
-
-Here are some of the results that I've made!
-
-<div class="flex-container">
-    <section>
-        <button class="accordion"><h2>G005</h2></button>
-        <div id="G005" class="panel"></div>
-        <script>
-            let G005Container = document.getElementById("G005");
-            let G005Pictures = ["png", "pixelSchool", "pixelSchool2", "pixelTurtle",
-                "pixelTurtle2", "talonflame", "talonflame2", "concorde", "arjunFace"];
-            for (let i = 1; i < G005Pictures.length; i++) {
-                let src = "images/block_art/" + G005Pictures[i] + "." + G005Pictures[0];
-                let img = new Image();
-                img.src = src;
-                G005Container.appendChild(img);
-            }
-        </script>
-    </section>
-</div>
-
-<script src="res/gallery-expander.js"></script>
 
 The parameter that adjusts how objects are sectioned and made is the variance. As the variance increases, less objects are formed since fewer pixels break through the variance threshold to become a new object. Vice versa, we see more detail in the image as the variance decreases. Similarly, the runtime of the algorithm and coloring functions are proportional to the variance. As more objects are created, the coloring function specifically has to look through more equivalent IDs before it can reach the base ID.
 
