@@ -88,6 +88,16 @@ class Section extends React.Component {
             }
         };
 
+        // only display gallery if images exist
+        let gallery;
+        if(this.state.images.length !== 0) {
+            gallery =
+                <Gallery
+                    images={this.state.images}
+                />;
+        }
+
+        // only display expandable if prop is true
         let expandable;
         if(this.props.expandable === "true"){
             expandable =
@@ -101,9 +111,7 @@ class Section extends React.Component {
                                 transformImageUri={getURI}
                             />
                             <br/>
-                            <Gallery
-                                images={this.state.images}
-                            />
+                            {gallery}
                         </div>
                     </SkyLight>
                 </div>;
