@@ -12,9 +12,9 @@
  *      After   1.388s/2.234s
  */
 //modify these variables
-let name = "launch2";
+let name = "totodile";
 let extension = ".jpg";
-let variance = 10;
+let variance = 20;
 //do not modify
 let d;
 let iteration = 0;
