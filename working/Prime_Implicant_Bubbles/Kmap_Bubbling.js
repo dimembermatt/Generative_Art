@@ -1,11 +1,11 @@
 /**
- * Prime_Implicant_Bubble.js
+ * Kmap_Bubbling.js
  * Matthew Yu
  * 10/22/19
  * One of a series of sketches involving Generative Art.
  *
  * Description:
- *  Prime Implicant Bubbles
+ *  Kmap Bubbling
  *  Given an nxn matrix/torus
  *  Give each cell a color value in the RGB space and a 1/0 value.
  *  If two adjacent cells are 1, merge them together and create a larger 2^n cell
