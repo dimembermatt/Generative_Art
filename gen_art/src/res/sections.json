@@ -132,4 +132,16 @@
         ["wunderscape1.png",        2, 1],
         ["wunderscape2.png",        2, 1]
     ]
+},
+{
+    "title": "RPS Cellular Automata",
+    "thumbnailURL": "RPS_nebula.png",
+    "sectionID": "RPS_Cellular_Automata",
+    "expandable": "true",
+    "images": [
+        ["Nebula_1.png",            1, 1],
+        ["Nebula_2.png",            1, 1],
+        ["Nebula_3.png",            1, 1],
+        ["Nebula_4.png",            1, 1]
+    ]
 }]
