@@ -24,7 +24,7 @@ function setup() {
       let lon = map(j, 0, total, 0, TWO_PI);
       let x = radius * sin(lat) * cos(lon);
       let y = radius * sin(lat) * sin(lon);
-      let z = radius * cos(lat);
+      let z = 1; //radius * cos(lat);
       globe[i][j] = new Vector(x, y, z);
     }
   }

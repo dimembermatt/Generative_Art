@@ -10,13 +10,25 @@
  * Extension: Modify the matrix to have multiple layers, of which the sum of probabilities over all layers is 1.
  * Throw random points over the matrix.
  */
-const   NUM_POINTS = 1000000,
-        WIDTH = 1350,    WIDTH_SEC = 25,
-        HEIGHT = 800,   HEIGHT_SEC = 25,
-                        DEPTH_SEC = 4,
-        SCALE_X = -1.3,   SCALE_Y = .7,
+const   NUM_POINTS = 5000000,
+        WIDTH = 1100,    WIDTH_SEC = 2,
+        HEIGHT = 700,   HEIGHT_SEC = 2,
+                        DEPTH_SEC = 3,
+        SCALE_X = -1.1,   SCALE_Y = .8,
         SHIFT_Y = 10,
-        STEP_WIDTH = 1;
+        STEP_WIDTH = 10;
+
+        WHITE   = [255, 255, 255, 200];
+        RED     = [255, 0, 0, 200];
+        GREEN   = [0, 255, 0, 200];
+        BLUE    = [0, 0, 255, 200];
+
+
+// layer color
+let color1 = RED;
+let color2 = GREEN;
+let color3 = BLUE;
+let color4 = WHITE;
 
 function create3dArray(columns, rows, layers) {
    var arr = new Array(columns);
@@ -27,10 +39,10 @@ function create3dArray(columns, rows, layers) {
      }
    }
    return arr;
- }
+}
 
 let matrix, total;
-// let points = [];
+let points = [];
 function setup() {
     matrix = create3dArray(WIDTH_SEC, HEIGHT_SEC, DEPTH_SEC);
     console.log("Built the matrix.");
@@ -50,7 +62,7 @@ function setup() {
     }
     console.log("Populated the matrix.");
 
-    strokeWeight(1); // Make the points 10 pixels in size
+    loadPixels();
     for (let i = 0; i < NUM_POINTS; i++) {
         let value = random(0, total);
         let done = true;
@@ -64,27 +76,25 @@ function setup() {
                             Y:j*HEIGHT/HEIGHT_SEC+random(0, HEIGHT/HEIGHT_SEC),
                             Z:l*DEPTH_SEC+random(0, DEPTH_SEC) // replace width with height?
                         };
+
+                        let Xin = ((newPoint.X + newPoint.Y*SCALE_X) * .5) + WIDTH/2;
+                        let Yin = ((newPoint.Y*SCALE_Y + newPoint.Z*SHIFT_Y) * .5) + HEIGHT/4;
                         switch(l) {
-                            case 0: stroke(255, 0, 0, 230);
+                            case 0: setP(Xin, Yin, color1);
                                     break;
-                            case 1: stroke(0, 255, 0, 230);
+                            case 1: setP(Xin, Yin, color2);
                                     break;
-                            case 2: stroke(0, 0, 255, 230);
+                            case 2: setP(Xin, Yin, color3);
                                     break;
-                            default: stroke(255/(l + 1), 255/(l + 1), 255/(l + 1), 230);
+                            default:setP(Xin, Yin, color4);
                         }
-                        push();
-                        translate(WIDTH/2, HEIGHT/4);
-                        scale(.6, .6);
-                        point(newPoint.X + newPoint.Y*SCALE_X, newPoint.Y*SCALE_Y + newPoint.Z*SHIFT_Y);
-                        pop();
-                        // points.push(newPoint);
                         done = false;
                     }
                 }
             }
         }
     }
+    updatePixels();
     console.log("Populated the monte carlo simulation.");
 }
 
@@ -94,4 +104,18 @@ function draw() {
     //     strokeWeight(3); // Make the points 10 pixels in size
     //     point(points[i].X, points[i].Y);
     // }
+}
+
+
+function getP(x, y){
+    var off = (y * WIDTH + x) * d * 4;
+    return [pixels[off], pixels[off + 1], pixels[off + 2], pixels[off + 3]];
+}
+
+function setP(x, y, color){
+    var off = (round(y) * (WIDTH*1.2) + round(x)) * 1 * 4;
+    pixels[off] = color[0];
+    pixels[off + 1] = color[1];
+    pixels[off + 2] = color[2];
+    pixels[off + 3] = color[3];
 }
