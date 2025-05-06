@@ -12,7 +12,7 @@
     "react-dom": "^16.8.6",
     "react-markdown": "^4.1.0",
     "react-photo-gallery": "^8.0.0",
-    "react-router-dom": "^5.0.1",
+    "react-router-dom": "^7.5.2",
     "react-scripts": "3.0.1",
     "react-skylight": "^0.5.1"
   },
